@@ -15,10 +15,10 @@ import os
 
 import zope.interface
 
-from twisted.internet import defer, protocol, reactor, task
+from twisted.internet import defer, reactor, task
 from twisted.python.failure import Failure
 
-from txredis import RedisClient
+from urlparse import urlparse
 
 from Products.ZenCollector.interfaces import ICollector,\
                                              ICollectorPreferences,\
@@ -218,7 +218,6 @@ class CollectorDaemon(RRDDaemon):
         self._thresholds = Thresholds()
         self._unresponsiveDevices = set()
         self._publisher = None
-        self._metricsChannel = publisher.defaultMetricsChannel
         self._timedMetricCache = {}
         self._rrd = None
         self.reconfigureTimeout = None
@@ -267,8 +266,21 @@ class CollectorDaemon(RRDDaemon):
                                type='int',
                                default=0,
                                help='How often to logs statistics of current tasks, value in seconds; very verbose')
-        self.parser.add_option('--redis-url', default='redis://localhost:16379/0',
-            help='redis connection string: redis://[hostname]:[port]/[db], default: %default')
+        self.parser.add_option('--redis-url', 
+                               dest='redisUrl',
+                               type='string',
+                               default='redis://localhost:{default}/0'.format(default=publisher.defaultRedisPort),
+                               help='redis connection string: redis://[hostname]:[port]/[db], default: %default')
+        self.parser.add_option('--metricBufferSize',
+                               dest='metricBufferSize',
+                               type='int',
+                               default=publisher.defaultMetricBufferSize,
+                               help='Number of metrics to buffer if redis goes down')
+        self.parser.add_option('--metricsChannel',
+                               dest='metricsChannel',
+                               type='string',
+                               default=publisher.defaultMetricsChannel,
+                               help='redis channel to which metrics are published')
 
         frameworkFactory = zope.component.queryUtility(IFrameworkFactory, self._frameworkFactoryName)
         if hasattr(frameworkFactory, 'getFrameworkBuildOptions'):
@@ -358,7 +370,7 @@ class CollectorDaemon(RRDDaemon):
         timestamp = int(time.time()) if timestamp == 'N' else timestamp
 
         # write the raw metric to Redis
-        self._publisher.put(self._metricsChannel, 
+        self._publisher.put(self.options.metricsChannel,
                 metric,
                 value,
                 timestamp,
@@ -650,7 +662,15 @@ class CollectorDaemon(RRDDaemon):
                              self.name,
                              thresholds,
                              rrdCreateCommand)
-        self._publisher= yield publisher.RedisListPublisher.create()
+
+        host, port = urlparse(self.options.redisUrl).netloc.split(':')
+        try:
+            port = int(port)
+        except ValueError:
+            log.exception("redis url contains non-integer port value {port}, defaulting to {default}".format(port=port, default=16379))
+            port = publisher.defaultRedisPort
+
+        self._publisher= yield publisher.RedisListPublisher.create(host, port, self.options.metricBufferSize)
  
     def _isRRDConfigured(self):
         return (self.rrdStats and self._rrd)
