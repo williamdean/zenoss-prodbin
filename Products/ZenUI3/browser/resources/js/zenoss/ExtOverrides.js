@@ -387,8 +387,8 @@ Ext.override(Ext.util.Sorter, {
             page;
 
             // If any requests return, we no longer respond to them.
-            if (me.pageMap.events.pageadded) {
-                me.pageMap.events.pageadded.clearListeners();
+            if (me.data.events.pageadded) {
+                me.data.events.pageadded.clearListeners();
             }
 
             // If the page cache gets cleared it's because a full reload is in porogress

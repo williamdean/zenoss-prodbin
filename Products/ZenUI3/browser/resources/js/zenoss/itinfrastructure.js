@@ -347,7 +347,7 @@ function deleteDevicesWithProgressBar(grid, uids, opts, callback){
 Ext.apply(Zenoss.devices, {
     deleteDevices: new Zenoss.ActionButton({
         //text: _t('Delete Devices'),
-        iconCls: 'delete',
+        glyph: 'xf002@FontAwesome',
         id: 'delete-button',
         permission: 'Delete Device',
         handler: function(btn, e) {
@@ -1325,7 +1325,7 @@ var device_grid = Ext.create('Zenoss.DeviceGridPanel', {
             '-',
             {
                 id: 'adddevice-button',
-                iconCls: 'adddevice',
+                glyph: 'xf0fe@FontAwesome',
                 menu:{
                     items: [
                         Zenoss.devices.addDevice,
@@ -1336,22 +1336,6 @@ var device_grid = Ext.create('Zenoss.DeviceGridPanel', {
             Zenoss.devices.deleteDevices,
              {
                 text: _t('Select'),
-                listeners: {
-                    afterrender: function(e){
-                        var textItem = e.menu.items.items[0];
-                        var store = Ext.getCmp('device_grid').getStore();
-                        store.on('load', function(){
-                            /*
-                                added the guaranteeRange so that when the user is selecting the expected pagesize in select(all/none),
-                                they'll actually get the advertised range. Otherwise, it only loads some unexpected amount over the view
-                                which can be different depending on how tall the viewable grid is (and is NOT the pageSize, nor does it
-                                take the pageSize into account). This forces consistency.
-                            */
-                            store.guaranteeRange(0, store.pageSize-1);
-                            textItem.setText(Ext.String.format(_t("{0} at a time"),  store.data.items.length) );
-                        }, this);
-                    }
-                },
                 menu:[
                     {
                         text: _t("All"),
@@ -1373,7 +1357,7 @@ var device_grid = Ext.create('Zenoss.DeviceGridPanel', {
                 xtype: 'refreshmenu',
                 ref: 'refreshmenu',
                 stateId: 'devicerefresh',
-                iconCls: 'refresh',
+                glyph: 'xf002@FontAwesome',
                 text: _t('Refresh'),
                 tooltip: _t('Refresh Device List'),
                 handler: function(btn) {
