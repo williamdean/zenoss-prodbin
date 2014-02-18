@@ -628,6 +628,7 @@
                 bodyCls: 'device-overview-panel',
                 padding: '10',
                 frame: false,
+                layout: 'anchor',
                 forms: [],
                 listeners: {
                     add: function(me, container) {
