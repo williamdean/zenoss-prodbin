@@ -7955,78 +7955,78 @@ $menu-icon-unchecked: 'menu/unchecked.gif';
   padding: 0; }
 
 .x-btn-dialog-dark-small-icon button, .x-btn-dialog-dark-small-icon a, .x-btn-dialog-dark-small-icon .x-btn-inner, .x-btn-dialog-dark-small-noicon button, .x-btn-dialog-dark-small-noicon a, .x-btn-dialog-dark-small-noicon .x-btn-inner {
-  height: 0;
-  line-height: 0; }
+  height: 18;
+  line-height: 18; }
 
 .x-btn-dialog-dark-small-icon button, .x-btn-dialog-dark-small-icon a {
   padding: 0; }
 .x-btn-dialog-dark-small-icon .x-btn-inner {
   /* even though there is no text we set a width and padding as buttons shrink-wrap around this element */
-  width: 0;
+  width: 18;
   padding: 0; }
 .x-btn-dialog-dark-small-icon .x-btn-icon {
-  width: 0;
-  height: 0;
+  width: 18;
+  height: 18;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0; }
 
 .x-btn-dialog-dark-small-icon-text-left button, .x-btn-dialog-dark-small-icon-text-left a {
-  height: 0; }
+  height: 18; }
 .x-btn-dialog-dark-small-icon-text-left .x-btn-inner {
-  height: 0;
-  line-height: 0;
-  padding-left: 4px; }
+  height: 18;
+  line-height: 18;
+  padding-left: 22px; }
 .x-btn-dialog-dark-small-icon-text-left .x-btn-icon {
-  width: 0;
+  width: 18;
   height: auto;
   top: 0;
   left: 0;
   bottom: 0;
   right: auto; }
 .x-ie6 .x-btn-dialog-dark-small-icon-text-left .x-btn-icon, .x-quirks .x-btn-dialog-dark-small-icon-text-left .x-btn-icon {
-  height: 0; }
+  height: 18; }
 
 .x-btn-dialog-dark-small-icon-text-right button, .x-btn-dialog-dark-small-icon-text-right a {
-  height: 0; }
+  height: 18; }
 .x-btn-dialog-dark-small-icon-text-right .x-btn-inner {
-  height: 0;
-  line-height: 0;
-  padding-right: 4px !important; }
+  height: 18;
+  line-height: 18;
+  padding-right: 22px !important; }
 .x-btn-dialog-dark-small-icon-text-right .x-btn-icon {
-  width: 0;
+  width: 18;
   height: auto;
   top: 0;
   left: auto;
   bottom: 0;
   right: 0; }
 .x-ie6 .x-btn-dialog-dark-small-icon-text-right .x-btn-icon, .x-quirks .x-btn-dialog-dark-small-icon-text-right .x-btn-icon {
-  height: 0; }
+  height: 18; }
 
 .x-btn-dialog-dark-small-icon-text-top .x-btn-inner {
-  padding-top: 4px; }
+  padding-top: 22px; }
 .x-btn-dialog-dark-small-icon-text-top .x-btn-icon {
   width: auto;
-  height: 0;
+  height: 18;
   top: 0;
   left: 0;
   bottom: auto;
   right: 0; }
 .x-ie6 .x-btn-dialog-dark-small-icon-text-top .x-btn-icon, .x-quirks .x-ie .x-btn-dialog-dark-small-icon-text-top .x-btn-icon {
-  width: 0; }
+  width: 18; }
 
 .x-btn-dialog-dark-small-icon-text-bottom .x-btn-inner {
-  padding-bottom: 4px; }
+  padding-bottom: 22px; }
 .x-btn-dialog-dark-small-icon-text-bottom .x-btn-icon {
   width: auto;
-  height: 0;
+  height: 18;
   top: auto;
   left: 0;
   bottom: 0;
   right: 0; }
 .x-ie6 .x-btn-dialog-dark-small-icon-text-bottom .x-btn-icon, .x-quirks .x-ie .x-btn-dialog-dark-small-icon-text-bottom .x-btn-icon {
-  width: 0; }
+  width: 18; }
 
 .x-nbr .x-btn-dialog-dark-small-over .x-frame-tl, .x-nbr .x-btn-dialog-dark-small-over .x-frame-bl, .x-nbr .x-btn-dialog-dark-small-over .x-frame-tr, .x-nbr .x-btn-dialog-dark-small-over .x-frame-br, .x-nbr .x-btn-dialog-dark-small-over .x-frame-tc, .x-nbr .x-btn-dialog-dark-small-over .x-frame-bc {
   background-image: url('/++resource++extjs/resources/themes/images/default/btn/btn-dialog-dark-small-over-corners.gif'); }
@@ -9818,3 +9818,9 @@ CORE TRIGGER PAGE STUFF
 #searchInput-inputEl {
   margin-top: 5px !important;
   padding-left: 30px !important; }
+
+.x-btn-default-toolbar-small-icon .x-btn-inner {
+  display: inline; }
+
+.x-btn-default-toolbar-small-icon-text-left .x-btn-inner {
+  display: inline; }
