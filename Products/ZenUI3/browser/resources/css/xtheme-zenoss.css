@@ -8402,17 +8402,23 @@ $menu-icon-unchecked: 'menu/unchecked.gif';
   background-image: url() !important;
   background-position: 0 0; }
 .x-form-itemselector-btn .x-form-itemselector-top {
-  background-image: url("/++resource++zenui/img/ext4/icon/top2.gif") !important; }
+  background-image: url("/++resource++zenui/img/ext4/icon/top2.gif") !important;
+  padding-left: 12px; }
 .x-form-itemselector-btn .x-form-itemselector-up {
-  background-image: url("/++resource++zenui/img/ext4/icon/up2.gif") !important; }
+  background-image: url("/++resource++zenui/img/ext4/icon/up2.gif") !important;
+  padding-left: 12px; }
 .x-form-itemselector-btn .x-form-itemselector-add {
-  background-image: url("/++resource++zenui/img/ext4/icon/right2.gif") !important; }
+  background-image: url("/++resource++zenui/img/ext4/icon/right2.gif") !important;
+  padding-left: 12px; }
 .x-form-itemselector-btn .x-form-itemselector-remove {
-  background-image: url("/++resource++zenui/img/ext4/icon/left2.gif") !important; }
+  background-image: url("/++resource++zenui/img/ext4/icon/left2.gif") !important;
+  padding-left: 12px; }
 .x-form-itemselector-btn .x-form-itemselector-down {
-  background-image: url("/++resource++zenui/img/ext4/icon/down2.gif") !important; }
+  background-image: url("/++resource++zenui/img/ext4/icon/down2.gif") !important;
+  padding-left: 12px; }
 .x-form-itemselector-btn .x-form-itemselector-bottom {
-  background-image: url("/++resource++zenui/img/ext4/icon/bottom2.gif") !important; }
+  background-image: url("/++resource++zenui/img/ext4/icon/bottom2.gif") !important;
+  padding-left: 12px; }
 .x-form-itemselector-btn .x-frame-ml, .x-form-itemselector-btn .x-frame-mc, .x-form-itemselector-btn .x-frame-mr, .x-form-itemselector-btn .x-frame-bl, .x-form-itemselector-btn .x-frame-bc, .x-form-itemselector-btn .x-frame-br, .x-form-itemselector-btn .x-frame-tl, .x-form-itemselector-btn .x-frame-tc, .x-form-itemselector-btn .x-frame-tr {
   background-image: none !important; }
 
@@ -9824,3 +9830,6 @@ CORE TRIGGER PAGE STUFF
 
 .x-btn-default-toolbar-small-icon-text-left .x-btn-inner {
   display: inline; }
+
+.x-mask-msg div {
+  border: 0px solid #A3BAD9; }

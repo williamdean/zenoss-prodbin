@@ -509,7 +509,6 @@
             Ext.applyIf(viewConfig, {
                 autoScroll:false,
                 stripeRows:true,
-                loadMask:true,
                 preserveScrollOnRefresh: true
             });
 

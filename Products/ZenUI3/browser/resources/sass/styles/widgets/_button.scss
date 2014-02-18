@@ -479,21 +479,27 @@
 
         .#{$prefix}form-itemselector-top{
             @include zenoss-background-image("icon/top2.gif", true);
+            padding-left: 12px;            
         }
         .#{$prefix}form-itemselector-up{
-            @include zenoss-background-image("icon/up2.gif", true);        
+            @include zenoss-background-image("icon/up2.gif", true);
+            padding-left: 12px;            
         }
         .#{$prefix}form-itemselector-add{
-            @include zenoss-background-image("icon/right2.gif", true);        
+            @include zenoss-background-image("icon/right2.gif", true);
+            padding-left: 12px;            
         }
         .#{$prefix}form-itemselector-remove{
-            @include zenoss-background-image("icon/left2.gif", true);        
+            @include zenoss-background-image("icon/left2.gif", true);
+            padding-left: 12px;            
         }
         .#{$prefix}form-itemselector-down{
-            @include zenoss-background-image("icon/down2.gif", true);        
+            @include zenoss-background-image("icon/down2.gif", true);
+            padding-left: 12px;            
         }
         .#{$prefix}form-itemselector-bottom{
-            @include zenoss-background-image("icon/bottom2.gif", true);        
+            @include zenoss-background-image("icon/bottom2.gif", true);
+            padding-left: 12px;            
         }
         
         .#{$prefix}frame-ml, .#{$prefix}frame-mc, .#{$prefix}frame-mr, 
