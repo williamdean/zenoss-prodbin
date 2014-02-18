@@ -230,10 +230,14 @@ $include-missing-images: true;
 }
 
 
-  .x-btn-default-toolbar-small-icon .x-btn-inner {
-    display: inline;
-    }
+.x-btn-default-toolbar-small-icon .x-btn-inner {
+   display: inline;
+}
 
-      .x-btn-default-toolbar-small-icon-text-left .x-btn-inner{
-        display: inline;
-        }
+.x-btn-default-toolbar-small-icon-text-left .x-btn-inner{
+   display: inline;
+}
+
+.x-mask-msg div {
+   border: 0px solid #A3BAD9;
+}
