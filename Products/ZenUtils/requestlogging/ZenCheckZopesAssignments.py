@@ -7,6 +7,8 @@
 # 
 ##############################################################################
 
+import Globals
+
 from ZopeRequestLogger import ZopeRequestLogger
 
 import subprocess
@@ -15,11 +17,18 @@ import time
 import datetime
 import os
 import sys
-
+import redis
 import argparse
+import json
 
 SCRIPT_VERSION = '1.0.0'
 
+'''------------------------ VERSION SUMMARY --------------------------------
+ 1.0.0 pending zope calls detected parsing start/end traces from log file
+ 1.1.0 pending zope calls detected using Redis. output less verbose
+ -------------------------------------------------------------------------'''
+
+REDIS_URL = ZopeRequestLogger.get_redis_url()
 def execute_command(command):
     """
     Params: command to execute
@@ -79,7 +88,7 @@ class ZopeInfoRetriever(object):
 		zopes = []
 		output, stderr = execute_command(ZopeInfoRetriever.COMMAND)
 		if len(stderr) > 0:
-			print 'error'
+			print 'Error retrieving zopes information'
 		else:
 			zopes = self._parse_command_output(output)
 		return zopes
@@ -126,38 +135,33 @@ class ProcessInfoRetriever(object):
 				info['pid'] = pid
 				info['cpu'] = data[0]
 				info['mem'] = data[1]
-				#import pdb; pdb.set_trace()
 				info['etime'] = data[2]
 				info['seconds_running'] = self._parse_elapsed_time(data[2])
 				info['cmd'] = ' '.join(data[3:])
 		return info
 
-class ZopeLogRetriever(object):
+def get_redis_client():
+        redis_client = ZopeRequestLogger.create_redis_client(REDIS_URL)
+        if redis_client is None:
+                msg = 'ERROR connecting to redis. redis URL: {0}'.format(REDIS_URL)
+                print msg
+                print 'Please check the redis-url value in global.conf'
+                sys.exit(1)
+        return redis_client
 
-	SEPARATOR = ZopeRequestLogger.SEPARATOR
+class ZopeAssignmentDataRetriever(object):
 
-	FIELDS = ['log_timestamp'] + ZopeRequestLogger.FIELDS
+        def __init__(self):
+                self._redis_client = get_redis_client()
 
-	def __init__(self):
-		pass
-
-	def _parse_line(self, line):
-		parsed_line = {}
-		line = line.strip()
-		data = line.split(ZopeLogRetriever.SEPARATOR)
-		if len(data) > 0:
-			parsed_line['fingerprint'] = (ZopeLogRetriever.SEPARATOR).join(data[2:])
-			for field, value in zip(ZopeLogRetriever.FIELDS, data):
-				parsed_line[field] = value
-		return parsed_line
-
-	def read_log(self, path):
-		lines = []
-		with open(path) as f:
-			for line in f:
-				parsed_line = self._parse_line(line)
-				lines.append(parsed_line)
-		return lines
+        def get_pending_assignments(self):
+                pattern = '{0}*'.format(ZopeRequestLogger.REDIS_KEY_PATTERN)
+                keys = self._redis_client.keys(pattern)
+                assignments = []
+                for key in keys:
+                        value = self._redis_client.get(key)
+                        assignments.append(json.loads(value))
+                return assignments
 
 #------------------------------------------------------------------------------------------------
 
@@ -177,13 +181,10 @@ class ZopeInfo(object):
 		self.etime = ''
 		self.seconds_running = 0
 		#Zope Assigments
-		self.assignments = {}
+		self.assignments = []
 
 	def add_assignment(self, assignment):
-		if 'START' in assignment.trace_type:
-			self.assignments[assignment.fingerprint] = assignment
-		elif 'END' in assignment.trace_type and assignment.fingerprint in self.assignments.keys():
-			del self.assignments[assignment.fingerprint]
+                self.assignments.append(assignment)
 
 	def set_process_info(self, data):
 		self.cpu = data.get('cpu', '')
@@ -201,8 +202,7 @@ class ZopeInfo(object):
 class ZopeAssignment(object):
 
 	def __init__(self, data):
-		self.log_timestamp = data.get('log_timestamp', '')
-		self.fingerprint = data.get('fingerprint', '')
+                self.user_name = data.get('user_name', '')
 		self.trace_type = data.get('trace_type', '')
 		self.start_time = data.get('start_time', '')
 		self.server_name = data.get('server_name', '')
@@ -212,36 +212,36 @@ class ZopeAssignment(object):
 		self.client = data.get('client', '')
 		self.http_host = data.get('http_host', '')
 		self.action_and_method = data.get('action_and_method', '')
-		self.forwarded_for = data.get('XFF', '')
+		self.forwarded_for = data.get('xff', '')
+                self.body = data.get('body', {})
 		self.zope_id = self.server_port
 
 	def __str__(self):
 		t = datetime.datetime.fromtimestamp(float(self.start_time))
-		now = datetime.datetime.now()
-		format = "%Y-%m-%d %H:%M:%S"
-		running_since = t.strftime(format)
-		ass_str = [ 'Request started {0}. ({1} seconds ago)'.format(running_since, str(datetime.datetime.now() - t)) ]
-		ass_str.append('Client: {0}'.format(self.client))
-		ass_str.append('HTTP Method: {0}'.format(self.http_method))
-		ass_str.append('Path: {0}'.format(self.path_info))
-		ass_str.append('Action/Method: {0}'.format(self.action_and_method))
+                #format = "%Y-%m-%d %H:%M:%S"
+                #running_since = t.strftime(format)
+                ass_str = [ ]
+                time_info = 'Request started {0} seconds ago'.format(str(datetime.datetime.now() - t))
+                ass_str.append('{0} / User: {1} / Client: {2} '.format(time_info, self.user_name, self.client))
+                ass_str.append('Path: {0} / Action/Method: {1}'.format(self.path_info, self.action_and_method))
 		if self.forwarded_for:
 			ass_str.append('Forwarded for: {0}'.format(self.forwarded_for))
-		return '\n\t\t'.join(ass_str)
+		return '\n\t'.join(ass_str)
 
 class ZopesManager(object):
 
-	def __init__(self):
+	def __init__(self, cli_options):
 		self.zopes = {} # dict {zope_id: ZopeInfo}
+                self.cli_options = cli_options
 
-	def _load_zopes_assignments(self, path_to_log):
+	def _load_zopes_assignments(self):
 		'''
-		return a dict zope_id : assignments found for zope_id
+                retrieved the pending zopes assignments from redis
 		'''
-		log_retreiver = ZopeLogRetriever()
-		parsed_lines = log_retreiver.read_log(path_to_log)
+                assignment_retreiver = ZopeAssignmentDataRetriever()
+                assingments_data = assignment_retreiver.get_pending_assignments()
 		assignments = {}
-		for data in parsed_lines:
+		for data in assingments_data:
 			new_assignment = ZopeAssignment(data)
 			zope_assignments = assignments.get(new_assignment.zope_id, [])
 			zope_assignments.append(new_assignment)
@@ -298,44 +298,36 @@ class ZopesManager(object):
 
 	def print_zopes_stats(self):
 		os.system('clear')
-		print '\n\n\n'
-		line_offset = 50
+		time.sleep(0.05)  # make refresh noticeable
+
 		if len(self.zopes.keys()) == 0:
-			print '%' * line_offset
-			print 'NO ZOPES FOUND!!'.center(line_offset)
-			print '%' * line_offset
-
-		for zope_id in sorted(self.zopes.keys()):
-			zope = self.zopes.get(zope_id)
-			zope_str = str(zope)
-			l = len(zope_str) + line_offset
-			print '\n\n'
-			print '=' * l 
-			print '{0}'.format(zope_str.center(l))
-			print '=' * l
-			if len(zope.assignments.keys()) == 0:
-				print 'No unfinished assignments.'.center(l)
+			if self.cli_options.get('running_zopes'):
+				print '\nCould not find any running zopes...'
 			else:
-				print 'Unfinished assignments found:'
+				print '\nCould not find any pending zope assignments...'
+		else:
 			first = True
-			for fingerprint, assignment in zope.assignments.iteritems():
+			for zope_id in sorted(self.zopes.keys()):
+				zope = self.zopes.get(zope_id)
+				zope_str = str(zope)
 				if first:
+					print '-'*len(zope_str)
 					first = False
-				else:
-					print '-' * l
-				print '      {0}'.format(assignment)
-			print '=' * l
+				print '{0}'.format(zope_str)
+				for assignment in zope.assignments:
+					print '     {0}'.format(assignment)
+				print '-'*len(zope_str)
 
-	def check_running_zopes_assignments(self, fname):
+	def check_running_zopes_assignments(self):
 		self.zopes = {}
-		assignments = self._load_zopes_assignments(fname)
+		assignments = self._load_zopes_assignments()
 		self.zopes = self._get_running_zopes()
 		self._process_assigments(assignments, process_all=False)
 		self.print_zopes_stats()
 
-	def check_all_zopes_assignments(self, fname):
+	def check_all_zopes_assignments(self):
 		self.zopes = {} # Zopes will be populated when assignments are processed
-		assignments = self._load_zopes_assignments(fname)
+		assignments = self._load_zopes_assignments()
 		self._process_assigments(assignments, process_all=True)
 		self.print_zopes_stats()
 
@@ -343,41 +335,61 @@ def parse_options():
     """Defines command-line options for script """
     parser = argparse.ArgumentParser(version=SCRIPT_VERSION,
                                      description="Checks for unfinished Zope requests.")
-    parser.add_argument("-f", "--file", action="store", default=ZopeRequestLogger.DEFAULT_LOG_FILE,
-                        help="path to Zope's assignments log file")
     parser.add_argument("-r", "--running_zopes", action="store_true", default=False,
                         help="Displays non finished requests for zopes that are currently running")
     parser.add_argument("-c", "--cycle", action="store_true", default=False,
                         help="performs the check periodically and only checks for requests assigned to zopes that are currently running")
     parser.add_argument("-freq", "--freq", action="store", default=5, type=int,
                         help="frecuency at which the check is performed (in seconds)")
+    parser.add_argument("-clear", "--clear_redis", action="store_true", default=False,
+                        help="Clears all pending zope requests from redis")
+    parser.add_argument("-show_details", "--show_details", action="store_true", default=False,
+                        help="Shows detailed information about the not finished requests")
     return vars(parser.parse_args())
+
+def clear_redis():
+       redis_client = get_redis_client()
+       pattern = '{0}*'.format(ZopeRequestLogger.REDIS_KEY_PATTERN)
+       keys = redis_client.keys(pattern)
+       redis_client.delete(*keys)
+
+def print_all_not_finished_assigments():
+       redis_client = get_redis_client()
+       pattern = '{0}*'.format(ZopeRequestLogger.REDIS_KEY_PATTERN)
+       keys = redis_client.keys(pattern)
+       print '-'*50
+       print 'Found {0} unfinished requests'.format(len(keys))
+       print '-'*50
+       if keys:
+               values = redis_client.mget(keys)
+               for value in values:
+                       print json.loads(value)
+                       print '-'*50
 
 def main():
 	""" """
 	cli_options = parse_options()
-	fname = cli_options.get('file')
-	if os.path.isfile(fname):
-		os.system('clear')
-		while True:
-			zopes_manager = ZopesManager()
-			if cli_options.get('running_zopes'):
-				zopes_manager.check_running_zopes_assignments(fname)
-			else:
-				zopes_manager.check_all_zopes_assignments(fname)
-			if not cli_options.get('cycle'):
-				break;
-			print '\n\n'
-			print '-' * 100
-			print ('SLEEPING for {0} seconds'.format(cli_options.get('freq'))).center(100)
-			print '-' * 100
-			print '\n\n'
-			time.sleep(cli_options.get('freq'))
-	else:
-		print "ERROR: Can't open file {0}".format(fname)
-		sys.exit(1)
+
+	if cli_options.get('clear_redis'):
+		clear_redis()
+		print "Pending requests cleared from redis"
+		sys.exit(0)
+        if cli_options.get('show_details'):
+                print_all_not_finished_assigments()
+                sys.exit(0)
+
+	os.system('clear')
+	while True:
+		zopes_manager = ZopesManager(cli_options)
+		if cli_options.get('running_zopes'):
+			zopes_manager.check_running_zopes_assignments()
+		else:
+			zopes_manager.check_all_zopes_assignments()
+		if not cli_options.get('cycle'):
+			break;
+		print ('\nSleeping for {0} seconds'.format(cli_options.get('freq')))
+		time.sleep(cli_options.get('freq'))
 
 if __name__ == "__main__":
 	main()
-
 
