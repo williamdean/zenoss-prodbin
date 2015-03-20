@@ -1,10 +1,10 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2010, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 
@@ -215,6 +215,16 @@ class NetworkRouter(TreeRouter):
         jobs = self.api.newDiscoveryJob(networks=networks, zProperties=zProperties, collector=collector)
         audit('UI.Discovery.Add', networks=networks, collector=collector)
         return DirectResponse.succeed(data=Zuul.marshal(jobs))
+
+    def getNetworks(self):
+        facade = self._getFacade()
+        result = facade.getNetworks()
+        return DirectResponse.succeed(data=Zuul.marshal(result, keys=['uid', 'name']))
+
+    def getNetworkMapData(self, uid, depth, filter="/"):
+        facade = self._getFacade()
+        result = facade.getNetworkMapData(uid, depth, filter="/")
+        return DirectResponse.succeed(data=Zuul.marshal(result))
 
 class Network6Router(NetworkRouter):
     """

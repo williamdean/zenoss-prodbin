@@ -22,6 +22,7 @@ from Products.Zuul.interfaces import IInfo, ICatalogTool
 from Products.Zuul.decorators import info
 from Products.Zuul.utils import unbrain
 from Products.Zuul.tree import SearchResults
+from Products.ZenUtils import NetworkTree
 from zenoss.protocols.protobufs.zep_pb2 import (
   SEVERITY_CRITICAL, SEVERITY_ERROR, SEVERITY_WARNING,
 )
@@ -272,6 +273,38 @@ class NetworkFacade(TreeFacade):
                         ', '.join(ranges))
                 )
         return jobs
+
+    def getNetworks(self):
+        root = self._dmd.Networks
+        return [IInfo(network) for network in root.getSubNetworks()]
+
+    def getNetworkMapData(self, uid, depth=2, filter="/"):
+        obj = self._getObject(uid)
+        edges = list(NetworkTree.get_edges(obj, depth=depth, withIcons=True, filter=filter))
+        nodes = []
+        links = []
+        for a, b in edges:
+            node1 =  {
+                'id': a[0],
+                'prop': a[0],
+                'icon': a[1],
+                'color': a[2]
+            }
+            node2 = {
+                'id': b[0],
+                'prop': b[0],
+                'icon': b[1],
+                'color': b[2]
+            }
+            link = {
+                'source': a[0],
+                'target': b[0]
+            }
+            if node1 not in nodes: nodes.append(node1)
+            if node2 not in nodes: nodes.append(node2)
+            if link not in links: links.append(link)
+            return dict(links=links, nodes=nodes)
+
 
 
 class Network6Facade(NetworkFacade):
