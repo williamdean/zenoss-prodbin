@@ -1,10 +1,10 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2007, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 
@@ -16,7 +16,7 @@ from OFS.Folder import Folder
 from Products.PluggableAuthService import plugins
 from Products.PluggableAuthService import interfaces
 from Products.PluggableAuthService import PluggableAuthService
-
+from Products.ZenUtils.RedisAuthHelper import RedisAuthHelper
 from zope import component
 import ZPublisher.interfaces
 
@@ -137,6 +137,20 @@ def setupSessionHelper(context, primaryAuth=True):
         interfaces.append('ICredentialsUpdatePlugin')
     acl.sessionAuthHelper.manage_activateInterfaces(interfaces)
 
+def setupRedisHelper(context, primaryAuth=True):
+    acl = context.acl_users
+    id = 'redisAuthHelper'
+    if not hasattr(acl, id):
+        helper = RedisAuthHelper(id)
+        acl._setObject(id, helper)
+
+    interfaces = ['IExtractionPlugin',
+                  'ICredentialsResetPlugin']
+    if primaryAuth:
+        interfaces.append('ICredentialsUpdatePlugin')
+    acl.redisAuthHelper.manage_activateInterfaces(interfaces)
+
+
 def activateCookieBasedAuthentication(context):
     """
     This sets cookie authentication as the primary auth
@@ -154,6 +168,11 @@ def activateSessionBasedAuthentication(context):
     """
     setupCookieHelper(context, primaryAuth=False)
     setupSessionHelper(context, primaryAuth=True)
+
+def activateRedisAuthHelper(context):
+    setupCookieHelper(context, primaryAuth=False)
+    setupSessionHelper(context, primaryAuth=True)
+    setupRedisHelper(context, primaryAuth=True)
 
 def setupRoleManager(context):
     acl = context.acl_users
@@ -319,4 +338,3 @@ def secureSessionCookie(event):
                 and event.request.environ['HTTP_X_FORWARDED_PROTO'] == 'https' \
                 and 'secure' not in event.request.response.cookies['_ZopeId']:
             event.request.response.cookies['_ZopeId']['secure'] = True
-

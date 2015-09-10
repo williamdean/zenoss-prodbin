@@ -221,121 +221,121 @@ def login(self):
 
 CookieAuthHelper.CookieAuthHelper.login = login
 
-_originalZODBUserManager_authenticateCredentials = ZODBUserManager.ZODBUserManager.authenticateCredentials
-def authenticateCredentials( self, credentials ):
-    user_id = credentials.get('session_user_id', '')
-    info = credentials.get('session_user_info', '')
+# _originalZODBUserManager_authenticateCredentials = ZODBUserManager.ZODBUserManager.authenticateCredentials
+# def authenticateCredentials( self, credentials ):
+#     user_id = credentials.get('session_user_id', '')
+#     info = credentials.get('session_user_info', '')
 
-    if user_id and self._getPAS().getUserById(user_id):
-        return user_id, info
+#     if user_id and self._getPAS().getUserById(user_id):
+#         return user_id, info
 
-    return _originalZODBUserManager_authenticateCredentials(self, credentials)
-
-
-ZODBUserManager.ZODBUserManager.authenticateCredentials = authenticateCredentials
+#     return _originalZODBUserManager_authenticateCredentials(self, credentials)
 
 
-def _pw_encrypt( self, password ):
-    """Returns the AuthEncoding encrypted password
-
-    If 'password' is already encrypted, it is returned
-    as is and not encrypted again.
-    """
-    if AuthEncoding.is_encrypted(password):
-        return password
-    return AuthEncoding.pw_encrypt(password, encoding='PBKDF2-SHA256')
-
-ZODBUserManager.ZODBUserManager._pw_encrypt = _pw_encrypt
+# ZODBUserManager.ZODBUserManager.authenticateCredentials = authenticateCredentials
 
 
-def extractCredentials(self, request):
-    creds = {}
+# def _pw_encrypt( self, password ):
+#     """Returns the AuthEncoding encrypted password
 
-    user_id = request.SESSION.get('__ac_logged_as', '')
-    info = request.SESSION.get('__ac_logged_info', '')
-    if user_id:
-        creds['session_user_id'] = user_id
-        creds['session_user_info'] = info
+#     If 'password' is already encrypted, it is returned
+#     as is and not encrypted again.
+#     """
+#     if AuthEncoding.is_encrypted(password):
+#         return password
+#     return AuthEncoding.pw_encrypt(password, encoding='PBKDF2-SHA256')
 
-        # Other authorization plugins may requrire this fields.
-        creds['login'] = ''
-        creds['password'] = ''
-    else:
-        # Look into the request now
-        login_pw = request._authUserPW()
-
-        if login_pw is not None:
-            name, password = login_pw
-            creds['login'] = name
-            creds['password'] = password
-
-    if creds:
-        creds['remote_host'] = request.get('REMOTE_HOST', '')
-
-        try:
-            creds['remote_address'] = request.getClientAddr()
-        except AttributeError:
-            creds['remote_address'] = request.get('REMOTE_ADDR', '')
-
-    return creds
-
-SessionAuthHelper.SessionAuthHelper.extractCredentials = extractCredentials
-
-def updateCredentials(self, request, response, login, new_password):
-    # PAS sends to this methos all credentials provided by user without
-    # checking.  So they need to be validate before session update.
-
-    # `admin` user located in another PAS instance.
-    if login == 'admin':
-        acl_users = self.getPhysicalRoot().acl_users
-    else:
-        acl_users = self.getPhysicalRoot().zport.dmd.acl_users
-
-    plugins = acl_users._getOb('plugins')
-    try:
-        authenticators = plugins.listPlugins(IAuthenticationPlugin)
-    except _SWALLOWABLE_PLUGIN_EXCEPTIONS:
-        log.debug('Authenticator plugin listing error', exc_info=True)
-        authenticators = ()
-
-    credentials = {
-        'login': login,
-        'password': new_password,
-        'extractor': 'sessionAuthHelper'}
-
-    # First try to authenticate against the emergency
-    # user and return immediately if authenticated
-    user_id, info = acl_users._tryEmergencyUserAuthentication(credentials)
-
-    if user_id is None:
-        for authenticator_id, auth in authenticators:
-            try:
-                uid_and_info = auth.authenticateCredentials(credentials)
-                if uid_and_info is None:
-                    continue
-
-                user_id, info = uid_and_info
-
-            except _SWALLOWABLE_PLUGIN_EXCEPTIONS:
-                log.debug('AuthenticationPlugin %s error', authenticator_id,
-                          exc_info=True)
-                continue
-
-            if user_id is not None:
-                break
-
-    if user_id is not None:
-        request.SESSION.set('__ac_logged_as', user_id)
-        request.SESSION.set('__ac_logged_info', info)
-
-SessionAuthHelper.SessionAuthHelper.updateCredentials = updateCredentials
+# ZODBUserManager.ZODBUserManager._pw_encrypt = _pw_encrypt
 
 
-def resetCredentials(self, request, response):
-    request.SESSION.set('__ac_logged_as', '')
-    request.SESSION.set('__ac_logged_info', '')
+# def extractCredentials(self, request):
+#     creds = {}
 
-SessionAuthHelper.SessionAuthHelper.resetCredentials = resetCredentials
+#     user_id = request.SESSION.get('__ac_logged_as', '')
+#     info = request.SESSION.get('__ac_logged_info', '')
+#     if user_id:
+#         creds['session_user_id'] = user_id
+#         creds['session_user_info'] = info
+
+#         # Other authorization plugins may requrire this fields.
+#         creds['login'] = ''
+#         creds['password'] = ''
+#     else:
+#         # Look into the request now
+#         login_pw = request._authUserPW()
+
+#         if login_pw is not None:
+#             name, password = login_pw
+#             creds['login'] = name
+#             creds['password'] = password
+
+#     if creds:
+#         creds['remote_host'] = request.get('REMOTE_HOST', '')
+
+#         try:
+#             creds['remote_address'] = request.getClientAddr()
+#         except AttributeError:
+#             creds['remote_address'] = request.get('REMOTE_ADDR', '')
+
+#     return creds
+
+# SessionAuthHelper.SessionAuthHelper.extractCredentials = extractCredentials
+
+# def updateCredentials(self, request, response, login, new_password):
+#     # PAS sends to this methos all credentials provided by user without
+#     # checking.  So they need to be validate before session update.
+
+#     # `admin` user located in another PAS instance.
+#     if login == 'admin':
+#         acl_users = self.getPhysicalRoot().acl_users
+#     else:
+#         acl_users = self.getPhysicalRoot().zport.dmd.acl_users
+
+#     plugins = acl_users._getOb('plugins')
+#     try:
+#         authenticators = plugins.listPlugins(IAuthenticationPlugin)
+#     except _SWALLOWABLE_PLUGIN_EXCEPTIONS:
+#         log.debug('Authenticator plugin listing error', exc_info=True)
+#         authenticators = ()
+
+#     credentials = {
+#         'login': login,
+#         'password': new_password,
+#         'extractor': 'sessionAuthHelper'}
+
+#     # First try to authenticate against the emergency
+#     # user and return immediately if authenticated
+#     user_id, info = acl_users._tryEmergencyUserAuthentication(credentials)
+
+#     if user_id is None:
+#         for authenticator_id, auth in authenticators:
+#             try:
+#                 uid_and_info = auth.authenticateCredentials(credentials)
+#                 if uid_and_info is None:
+#                     continue
+
+#                 user_id, info = uid_and_info
+
+#             except _SWALLOWABLE_PLUGIN_EXCEPTIONS:
+#                 log.debug('AuthenticationPlugin %s error', authenticator_id,
+#                           exc_info=True)
+#                 continue
+
+#             if user_id is not None:
+#                 break
+
+#     if user_id is not None:
+#         request.SESSION.set('__ac_logged_as', user_id)
+#         request.SESSION.set('__ac_logged_info', info)
+
+# SessionAuthHelper.SessionAuthHelper.updateCredentials = updateCredentials
+
+
+# def resetCredentials(self, request, response):
+#     request.SESSION.set('__ac_logged_as', '')
+#     request.SESSION.set('__ac_logged_info', '')
+
+# SessionAuthHelper.SessionAuthHelper.resetCredentials = resetCredentials
 
 
 def termsCheck(self):
