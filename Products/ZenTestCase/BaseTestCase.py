@@ -13,9 +13,7 @@ import logging
 import zope.component
 from zope.traversing.adapters import DefaultTraversable
 from transaction._transaction import Transaction
-
 from Testing import ZopeTestCase
-from Testing.ZopeTestCase.ZopeTestCase import standard_permissions
 from Testing.ZopeTestCase.layer import ZopeLite
 if 0:
     standard_permissions = None         # pyflakes

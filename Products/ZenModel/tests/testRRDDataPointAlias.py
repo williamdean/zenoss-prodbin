@@ -8,7 +8,9 @@
 ##############################################################################
 
 
-import os, sys
+import os
+import sys
+
 if __name__ == '__main__':
     framework = None                    # quiet pyflakes
     execfile(os.path.join(sys.path[0], 'framework.py'))
@@ -17,7 +19,8 @@ from ZenModelBaseTest import ZenModelBaseTest
 from Products.ZenModel.Device import manage_createDevice
 from Products.ZenModel.RRDDataPointAlias import RRDDataPointAlias,\
             EVAL_KEY, manage_addDataPointAlias
-from Products.ZenModel.tests.RRDTestUtils import DEFAULT_DSDP_MAP, TEST_TEMPLATE, addAlias, addAliases, assertAliasDatapointInMap, createTemplate, removeTemplate
+from Products.ZenModel.tests.RRDTestUtils import createTemplate
+
 
 def createDevice(dmd, deviceId):
     return manage_createDevice( dmd, deviceId )

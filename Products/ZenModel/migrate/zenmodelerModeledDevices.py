@@ -11,7 +11,7 @@
 __doc__ = """Provide a graph for zenmodeler's modeled device rate.
 """
 import logging
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.Utils import unused
 from Products.ZenModel.migrate import Migrate
 

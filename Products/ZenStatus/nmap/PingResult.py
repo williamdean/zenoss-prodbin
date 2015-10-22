@@ -1,10 +1,10 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2011, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 
@@ -13,11 +13,10 @@ __doc__ = """PingResult
 Utilities to parse nmap output and represent results.
 """
 
-import collections
 import math
 from lxml import etree
 
-import Globals
+import Globals  # noqa
 from zope import interface
 from Products.ZenStatus import interfaces, TraceHop
 

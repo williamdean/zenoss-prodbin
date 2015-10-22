@@ -15,7 +15,7 @@ is defined by a protocol type (udp/tcp) and a port number.
 
 """
 
-import Globals
+import Globals  # noqa
 from Acquisition import aq_chain
 from AccessControl import ClassSecurityInfo
 from Commandable import Commandable

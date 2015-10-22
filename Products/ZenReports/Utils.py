@@ -8,7 +8,7 @@
 ##############################################################################
 
 
-import Globals
+import Globals  # noqa
 import zope.interface
 
 from collections import defaultdict

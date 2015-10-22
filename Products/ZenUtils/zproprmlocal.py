@@ -11,7 +11,7 @@
 
 __doc__ = "Remove local value of zProperty from Devices"
 
-import Globals
+import Globals  # noqa  # noqa
 from Products.ZenUtils.ZCmdBase import ZCmdBase
 from Acquisition import aq_base
 import transaction

@@ -27,7 +27,7 @@ import re
 import gzip
 from itertools import imap
 
-import Globals
+import Globals  # noqa
 from ZCmdBase import ZCmdBase
 from Products.ZenUtils.Utils import zenPath, binPath, readable_time, unused
 from ZenBackupBase import BACKUP_DIR, CONFIG_FILE, CONFIG_SECTION, ZenBackupBase

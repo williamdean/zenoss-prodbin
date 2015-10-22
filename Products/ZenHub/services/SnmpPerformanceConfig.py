@@ -18,7 +18,7 @@ from pprint import pformat
 import logging
 log = logging.getLogger('zen.HubService.SnmpPerformanceConfig')
 
-import Globals
+import Globals  # noqa
 from twisted.spread import pb
 from Products.ZenCollector.services.config import DeviceProxy, CollectorConfigService
 

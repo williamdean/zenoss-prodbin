@@ -21,12 +21,12 @@ import logging
 log = logging.getLogger("zen.PingService")
 
 # Zenoss custom ICMP library
-from icmpecho.Ping import Ping4, Ping6
+from icmpecho.Ping import Ping4
 
 from twisted.internet import reactor, defer
 from twisted.python.failure import Failure
 
-import Globals
+import Globals  # noqa
 from Products.ZenStatus.PingJob import PingJob
 
 class PermissionError(Exception):

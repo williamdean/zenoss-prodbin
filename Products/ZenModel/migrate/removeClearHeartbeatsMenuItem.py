@@ -11,12 +11,11 @@
 __doc__ = """Remove the 'Clear Heartbeats' menu item used on the Device page
 as it is considered confusing. See ZEN-1101.
 """
-import os
 import logging
-import Globals
-from Products.ZenUtils.Utils import unused, zenPath
+
+import Globals  # noqa
+from Products.ZenUtils.Utils import unused
 from Products.ZenModel.migrate import Migrate
-from Products.Zuul import getFacade
 
 unused(Globals)
 

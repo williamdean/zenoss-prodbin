@@ -21,7 +21,7 @@ Turn email messages obtained from POP3 accounts into events.
 import logging
 import socket
 
-import Globals
+import Globals  # noqa
 import zope.interface
 
 from twisted.mail.pop3client import POP3Client
@@ -35,8 +35,8 @@ from Products.ZenCollector.interfaces import ICollector, ICollectorPreferences,\
 from Products.ZenCollector.tasks import NullTaskSplitter,\
                                         BaseTask, TaskStates
 
+
 # Invalidation issues arise if we don't import
-from Products.ZenCollector.services.config import DeviceProxy
 
 from Products.ZenEvents.MailProcessor import POPProcessor
 

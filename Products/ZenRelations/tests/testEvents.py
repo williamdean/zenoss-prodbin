@@ -1,35 +1,27 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2007, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 
-import transaction
-
-from Testing.ZopeTestCase.layer import ZopeLite
-
-from AccessControl.SecurityManagement import newSecurityManager
-from AccessControl.SecurityManagement import noSecurityManager
-
-from OFS.SimpleItem import SimpleItem
-from OFS.Folder import Folder
-
 from zope import interface
 from zope import component
+
+import transaction
+from Testing.ZopeTestCase.layer import ZopeLite
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 from zope.site.hooks import setHooks
 from zope.component.interfaces import IObjectEvent
 from zope.testing import cleanup
-
 from OFS.interfaces import IItem
 from Products.Five import zcml
 from Products.ZenRelations.RelationshipBase import IRelationship
 from Products.ZenRelations.RelationshipManager import RelationshipManager
-from Products.ZenRelations.RelSchema import RelSchema, ToMany, ToManyCont, ToOne
+from Products.ZenRelations.RelSchema import ToManyCont, ToOne
 
 class EventLogger(object):
     def __init__(self):
@@ -74,7 +66,7 @@ class TestContained(TestItem):
         ("container", ToOne(ToManyCont, TS + "TestToManyCont", "contained")),
     )
 
-import zope.interface
+
 def setUpEventlog(iface=None):
     eventlog.reset()
     component.provideHandler(eventlog.trace, (iface, IObjectEvent))
@@ -85,7 +77,7 @@ class EventLayer(ZopeLite):
 
     @classmethod
     def setUp(cls):
-        import Products
+        import Products  # noqa
 
         zcml._initialized = 0
         zcml.load_site()

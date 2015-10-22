@@ -26,10 +26,6 @@ from AccessControl import ClassSecurityInfo
 from Globals import DTMLFile
 from Globals import InitializeClass
 import zope.interface
-from Products import Zuul
-from Products.Zuul.interfaces import IInfo
-from Products.ZenUtils.jsonutils import json
-from Products.Zuul.utils import allowedRolesAndUsers
 from Products.ZenModel.interfaces import IIndexed
 from Products.ZenModel.Linkable import Layer3Linkable
 from Products.ZenRelations.RelSchema import ToOne, ToMany, ToManyCont

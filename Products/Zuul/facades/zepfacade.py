@@ -24,14 +24,14 @@ from zenoss.protocols.services.zep import ZepStatsClient, ZepServiceClient, \
 from zenoss.protocols.jsonformat import to_dict, from_dict
 from zenoss.protocols.protobufs.zep_pb2 import (
     EventSort, EventFilter, EventSummaryUpdateRequest, ZepConfig, EventNote,
-    EventSummaryUpdate, EventDetailSet, ZepStatistics
+    EventSummaryUpdate, EventDetailSet
 )
 from zenoss.protocols.protobufutil import listify
 from Products.ZenUtils import safeTuple
 from Products.ZenUtils.GlobalConfig import getGlobalConfiguration
 from Products.ZenUtils.guid.interfaces import IGlobalIdentifier
 from zenoss.protocols.protobufs.zep_pb2 import SEVERITY_CRITICAL, SEVERITY_ERROR, SEVERITY_WARNING, SEVERITY_INFO, \
-     SEVERITY_DEBUG, SEVERITY_CLEAR, STATUS_NEW, STATUS_ACKNOWLEDGED, STATUS_SUPPRESSED, OR, AND
+     SEVERITY_DEBUG, SEVERITY_CLEAR, STATUS_NEW, STATUS_ACKNOWLEDGED, STATUS_SUPPRESSED
 from Products.ZenUtils.guid.interfaces import IGUIDManager
 from Products.ZenEvents.ZenEventClasses import Status_Ping
 from zope.component import getUtility

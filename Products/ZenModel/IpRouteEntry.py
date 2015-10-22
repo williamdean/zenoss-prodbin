@@ -14,18 +14,14 @@ RouteEntry represents a group of devices
 """
 
 import re
+import logging
 
 from Globals import DTMLFile
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
-
 from Products.ZenUtils.Utils import localIpCheck, prepId
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
-
-
+from Products.ZenRelations.RelSchema import ToMany, ToManyCont, ToOne
 from OSComponent import OSComponent
-
-import logging
 log = logging.getLogger("zen.IpRouteEntry")
 
 def manage_addIpRouteEntry(context, dest, routemask, nexthopid, interface, 

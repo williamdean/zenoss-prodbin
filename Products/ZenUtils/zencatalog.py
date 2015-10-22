@@ -1,10 +1,10 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2010, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 import os
@@ -13,17 +13,13 @@ import logging
 import time
 import signal
 import cPickle as pickle
-from itertools import chain
-
-from Globals import DevelopmentMode, INSTANCE_HOME, data_dir, opened
+from Globals import DevelopmentMode, INSTANCE_HOME, data_dir, opened  # noqa
+from Queue import Empty, Full
+from multiprocessing import Process, Queue
 
 import transaction
 from BTrees.OOBTree import OOSet
-from Queue import Empty, Full
-from multiprocessing import Process, Queue
-from twisted.internet import defer, reactor, task
 from OFS.ObjectManager import ObjectManager
-from ZODB.POSException import ConflictError
 from ZEO.Exceptions import ClientDisconnected
 from ZEO.zrpc.error import DisconnectedError
 from ZODB.transact import transact
@@ -42,7 +38,6 @@ from Products.ZCatalog.Catalog import Catalog
 from Products.Zuul.catalog.interfaces import IGlobalCatalogFactory
 from Products.Zuul.catalog.global_catalog import GlobalCatalog
 from Products.Zuul.catalog.global_catalog import catalog_caching
-from Products.Zuul.catalog.global_catalog import initializeGlobalCatalog
 
 log = logging.getLogger("zen.Catalog")
 
@@ -420,7 +415,7 @@ def convert_into_document(worker_id, inbox, outbox, buffer_size, permissions_onl
     # Apply monkey patches ...
     def index_object(self, documentId, obj, threshold=None):
         val= self._evaluate(obj)
-      
+
         cuv = self._val2UnindexVal
         if val is not None and cuv is not None: unindexVal = cuv(val)
         else: unindexVal = val
@@ -459,10 +454,10 @@ def convert_into_document(worker_id, inbox, outbox, buffer_size, permissions_onl
 
 
     orig_catalogObject = Catalog.catalogObject
-    def catalogObject(self, object, uid, threshold=None, 
+    def catalogObject(self, object, uid, threshold=None,
                       idxs=None, update_metadata=1):
         uids.append(uid)
-        return orig_catalogObject(self, object, uid, threshold, 
+        return orig_catalogObject(self, object, uid, threshold,
                                   idxs, update_metadata)
     Catalog.catalogObject = catalogObject
 
@@ -856,7 +851,7 @@ class ZenCatalogBase(ZenDaemon):
         self._wait_for_children(print_progress)
 
         log.info("Merging catalog updates from worker processes into global catalog")
-        drop_all_arguments()        
+        drop_all_arguments()
         zc = ZenCatalog()
         dmd = zc.dmd
         zport = dmd.zport
@@ -979,7 +974,7 @@ class ZenCatalogBase(ZenDaemon):
             total_time = time.time() - start_time
             log.info("Reindexing completed in %1.1f seconds.", total_time)
             return True
- 
+
     def _create_new_global_catalog(self, force=False):
         p = Process(target=create_new_global_catalog, args=(force,))
         p.daemon = True

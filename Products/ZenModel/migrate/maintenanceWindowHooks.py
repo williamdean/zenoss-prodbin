@@ -14,10 +14,11 @@ Create hooks for finding and displaying maintenance windows
 (See ComponentMW ZenPack from services)
 
 '''
-import Migrate
 import logging
-from Products.ZenModel.MaintenanceWindow import createMaintenanceWindowCatalog
+
+import Migrate
 from Products.ZenUtils.Search import makePathIndex
+
 log = logging.getLogger('zen.migrateMaintWindows')
 
 

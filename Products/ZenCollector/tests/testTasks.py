@@ -8,10 +8,10 @@
 ##############################################################################
 
 
-import Globals
+import Globals  # noqa
 import zope.interface
 
-from Products.ZenCollector.interfaces import ICollector, IScheduledTask
+from Products.ZenCollector.interfaces import IScheduledTask
 from Products.ZenCollector.tasks import SimpleTaskSplitter, SimpleTaskFactory
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 from Products.ZenUtils.observable import ObservableMixin

@@ -29,7 +29,7 @@ log = logging.getLogger("zen.zentrap")
 # Magical interfacing with C code
 import ctypes as c
 
-import Globals
+import Globals  # noqa
 import zope.interface
 import zope.component
 
@@ -52,10 +52,9 @@ from pynetsnmp import netsnmp, twistedsnmp
 
 from Products.ZenUtils.captureReplay import CaptureReplay
 from Products.ZenEvents.EventServer import Stats
-from Products.ZenUtils.Utils import unused
 from Products.ZenEvents.TrapFilter import TrapFilter, TrapFilterError
-from Products.ZenEvents.ZenEventClasses import Clear, Critical, Error
-from Products.ZenUtils.Utils import unused, zenPath
+from Products.ZenEvents.ZenEventClasses import Clear, Critical
+from Products.ZenUtils.Utils import unused
 from Products.ZenCollector.services.config import DeviceProxy
 from Products.ZenHub.services.SnmpTrapConfig import User
 unused(Globals, DeviceProxy, User)

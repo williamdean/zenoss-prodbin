@@ -14,7 +14,7 @@ Manage ZenPack-provided daemons
 
 import os
 
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.PkgResources import pkg_resources
 
 from Products.ZenUtils.ZenScriptBase import ZenScriptBase

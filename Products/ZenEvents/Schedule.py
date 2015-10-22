@@ -197,7 +197,7 @@ if __name__ == "__main__":
             pass
         sync = commit
 
-    import Globals
+    import Globals  # noqa
     from Products.ZenUtils.ZCmdBase import ZCmdBase
 
     cmd = ZCmdBase()

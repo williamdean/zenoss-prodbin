@@ -9,7 +9,7 @@
 
 
 from celery.registry import tasks
-from celery.app import current_app
+
 
 def job(_context, class_, name=None):
     if name is not None:

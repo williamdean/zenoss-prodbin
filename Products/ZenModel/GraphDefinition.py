@@ -15,15 +15,16 @@ GraphDefinition defines the global options for a graph.
 
 import sys
 import string
+import logging
 
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
+from Products.ZenRelations.RelSchema import ToManyCont, ToOne
 from Products.ZenModel.ZenossSecurity import ZEN_MANAGE_DMD
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo, Permissions
 from ZenModelRM import ZenModelRM
 from Products.ZenWidgets import messaging
 from ZenPackable import ZenPackable
-import logging
+
 log = logging.getLogger("zen.Device")
 from Acquisition import aq_base
 from Products.ZenUtils.Utils import resequence

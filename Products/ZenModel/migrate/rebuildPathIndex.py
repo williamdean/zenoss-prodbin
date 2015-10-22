@@ -8,7 +8,7 @@
 ##############################################################################
 
 
-import Globals
+import Globals  # noqa
 import sys
 import Migrate
 import zExceptions

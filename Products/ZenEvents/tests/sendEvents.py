@@ -8,7 +8,7 @@
 ##############################################################################
 
 
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.ZCmdBase import ZCmdBase
 zodb = ZCmdBase(noopts=True)
 zem = zodb.dmd.ZenEventManager

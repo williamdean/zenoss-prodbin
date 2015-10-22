@@ -9,7 +9,7 @@
 import uuid
 import unittest
 
-import Globals
+import Globals  # noqa
 from Products.ZenMessaging.queuemessaging.publisher import ModelChangePublisher
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 from Products.ZenUtils.guid.interfaces import IGlobalIdentifier

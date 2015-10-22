@@ -16,7 +16,7 @@ Export RelationshipManager objects from a Zope database
 import sys
 import datetime
 
-import Globals
+import Globals  # noqa
 
 from Products.ZenUtils.ZCmdBase import ZCmdBase
 

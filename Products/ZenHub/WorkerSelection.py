@@ -8,11 +8,13 @@
 ##############################################################################
 
 
-from collections import defaultdict
 from itertools import ifilter
-from zope.component import queryUtility, getUtilitiesFor
+
 from zope.interface import implements
+
+from zope.component import getUtilitiesFor
 from .interfaces import IWorkerSelectionAlgorithm
+
 
 class InOrderSelection(object):
     """

@@ -24,12 +24,10 @@ log = logging.getLogger('zen.runCommand')
 
 import os
 from subprocess import Popen, PIPE
-import StringIO
 import signal
 
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.ZenScriptBase import ZenScriptBase
-from Products.ZenUtils.Utils import zenPath
 
 
 class CollectorStats:

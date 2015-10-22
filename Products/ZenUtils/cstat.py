@@ -13,7 +13,7 @@ metrics in memory.
 """
 
 import time
-import itertools
+
 
 class CStat(object):
     """

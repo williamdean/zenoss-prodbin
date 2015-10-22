@@ -8,12 +8,11 @@
 ##############################################################################
 
 
-import Globals
+import Globals  # noqa
 
 from itertools import ifilter
 from zope import component
 from Acquisition import aq_base
-from twisted.internet import defer, reactor
 from ZODB.transact import transact
 from PerformanceConfig import PerformanceConfig
 from Products.ZenHub.PBDaemon import translateError

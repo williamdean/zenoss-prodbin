@@ -10,7 +10,7 @@
 import logging
 
 import Migrate
-import Globals
+import Globals  # noqa
 
 from Products.ZenModel.DataPointGraphPoint import DataPointGraphPoint
 

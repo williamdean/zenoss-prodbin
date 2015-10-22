@@ -10,7 +10,7 @@
 
 import re
 
-import Globals
+import Globals  # noqa
 from Products.ZenReports.AliasPlugin import \
         AliasPlugin, Column, PythonColumnHandler, RRDColumnHandler
 

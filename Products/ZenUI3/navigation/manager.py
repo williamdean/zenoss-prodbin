@@ -10,8 +10,6 @@
 
 import zope.interface
 import zope.component
-from zope.viewlet.interfaces import IViewletManager, IViewlet
-from zope.contentprovider.interfaces import BeforeUpdateEvent
 
 from Products.Five.viewlet.manager import ViewletManagerBase
 

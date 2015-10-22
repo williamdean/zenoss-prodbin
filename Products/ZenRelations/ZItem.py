@@ -8,26 +8,26 @@
 ##############################################################################
 
 
-import marshal, re, sys, time
+import marshal
+import time
 
-import Globals, Acquisition
+import Globals  # noqa
+import Acquisition
 import App
 import App.Management
 import AccessControl
-import AccessControl.Role, AccessControl.Owned, App.Common
+import AccessControl.Role
+import AccessControl.Owned
+import App.Common
 from ExtensionClass import Base
 from ComputedAttribute import ComputedAttribute
 from AccessControl import getSecurityManager, Unauthorized
 from AccessControl.ZopeSecurityPolicy import getRoles
 from Acquisition import aq_base, aq_parent, aq_inner
-from DocumentTemplate.html_quote import html_quote
-from DocumentTemplate.ustr import ustr
 from zExceptions.ExceptionFormatter import format_exception
 from zExceptions import Redirect
-
 from OFS.CopySupport import CopySource
 from OFS.Traversable import Traversable
-
 from Products.ZenUtils.Utils import unused
 
 

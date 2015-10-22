@@ -9,7 +9,6 @@
 
 
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
-from zope.interface import implements
 from Products.ZenMessaging.queuemessaging.adapters import EventProtobuf as Serializer
 from Products.ZenMessaging.queuemessaging.publisher import EventPublisher, getModelChangePublisher, DummyQueuePublisher
 from zenoss.protocols.protobufs.zep_pb2 import Event

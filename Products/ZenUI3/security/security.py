@@ -8,7 +8,8 @@
 ##############################################################################
 
 
-from zope import interface, component
+from zope import interface
+
 from Products.Five.viewlet.manager import ViewletManagerBase
 from Products.ZenUtils.jsonutils import json
 from Products.Five.viewlet import viewlet

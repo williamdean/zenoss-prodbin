@@ -9,15 +9,14 @@
 
 
 import re
-import urllib
 import os.path
 from xml.dom import minidom
+
 from zope.i18n.negotiator import negotiator
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.ZenUtils.jsonutils import json
 from Products.ZenUI3.navigation import getSelectedNames
-
 
 _datapath = os.path.join(os.path.dirname(__file__), 'data')
 _valpat = re.compile(r'<[^<>]+>(.*)</[^<>]+>', re.M|re.S)

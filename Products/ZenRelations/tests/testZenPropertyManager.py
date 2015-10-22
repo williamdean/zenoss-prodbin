@@ -14,8 +14,7 @@ if __name__ == '__main__':
 
 from Acquisition import aq_base
 
-from Products.ZenRelations.tests.TestSchema import TestBaseClass, DataRoot, TS, Device, Server, IpInterface, Group, Location, Admin, Organizer, create, build
-from Products.ZenRelations.Exceptions import InvalidContainer, ObjectNotFound, RelationshipExistsError, ZenImportError, ZenRelationsError, ZenSchemaError, ZentinelException
+from Products.ZenRelations.tests.TestSchema import Organizer
 
 from ZenRelationsBaseTest import ZenRelationsBaseTest
 from Products.ZenTestCase.BaseTestCase import BaseTestCase

@@ -33,7 +33,7 @@ import email
 import os
 import socket
 
-import Globals
+import Globals  # noqa
 import zope.interface
 import zope.component
 from zope.interface import implements

@@ -29,9 +29,7 @@ from Products.ZenModel.ThresholdClass import ThresholdClass
 from Products.ZenModel.ThresholdGraphPoint import ThresholdGraphPoint
 from Products.ZenModel.GraphDefinition import GraphDefinition
 from Products.ZenModel.GraphPoint import GraphPoint
-from Products.ZenModel.DataPointGraphPoint import DataPointGraphPoint
 from Products.ZenModel.DeviceClass import DeviceClass
-
 
 log = logging.getLogger('zen.TemplateFacade')
 

@@ -9,7 +9,7 @@
 
 
 import unittest
-import Globals
+import Globals  # noqa
 
 from Products.ZenTestCase.BaseTestCase import ZenossTestCaseLayer, BaseTestCase
 from Products.ZenUtils.Driver import drive

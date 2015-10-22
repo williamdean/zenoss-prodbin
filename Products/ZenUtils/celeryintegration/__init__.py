@@ -21,8 +21,7 @@ import os
 # must be made at this point before any other celery-related import.
 os.environ.setdefault("CELERY_LOADER", LOADER_FQCN)
 
-from celery import current_app, states, chain
-from celery.utils.log import get_task_logger
+from celery import states
 
 from .loader import ZenossLoader
 from .backend import ZODBBackend
@@ -31,7 +30,6 @@ from .backend import ZODBBackend
 # otherwise these names will not be available when Task is imported.
 # Celery tasks are configured and registered when imported so AbortableTask
 # must be delayed until backend configuration is ready.
-from celery.contrib.abortable import AbortableTask as Task
 
 
 def _patchstate():

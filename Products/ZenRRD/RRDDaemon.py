@@ -16,7 +16,7 @@ Common performance monitoring daemon code for performance daemons.
 
 import socket
 
-import Globals
+import Globals  # noqa
 from Products.ZenEvents import Event
 
 from twisted.python import failure

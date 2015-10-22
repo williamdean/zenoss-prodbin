@@ -63,7 +63,7 @@ import zipfile
 from urlparse import urlsplit
 from collections import OrderedDict
 
-import Globals
+import Globals  # noqa
 import transaction
 
 from Products.ZenUtils.ZCmdBase import ZCmdBase

@@ -19,11 +19,11 @@ $Id:$"""
 __version__ = "$$"[11:-2]
 
 import time
-import os
-import pytz
-from datetime import datetime    
-from hashlib import sha224
+from datetime import datetime
 from math import isnan
+
+import pytz
+
 
 def _maybenow(gmtSecondsSince1970):
     if gmtSecondsSince1970 is None:

@@ -17,26 +17,22 @@ parse and construct an XML document.
 Descriptions of the XML document format can be found in the
 Developers Guide.
 """
-import Globals
+import Globals  # noqa
 import sys
 import os
+from xml.sax import make_parser, saxutils, SAXParseException
+from xml.sax.handler import ContentHandler
+
 import transaction
 import zope.component
 from zope.event import notify
 from DateTime import DateTime
-from xml.sax import make_parser, saxutils, SAXParseException
-from xml.sax.handler import ContentHandler
-
 from Acquisition import aq_base
 from zExceptions import NotFound
-from OFS.PropertyManager import PropertyManager
-
 from Products.ZenUtils.ZCmdBase import ZCmdBase
 from Products.ZenUtils.Utils import importClass
 from Products.ZenUtils.Utils import getObjByPath, getObjByPath2
-
 from Products.ZenModel.interfaces import IZenDocProvider
-from Products.ZenRelations.Exceptions import InvalidContainer, ObjectNotFound, RelationshipExistsError, ZenImportError, ZenRelationsError, ZenSchemaError, ZentinelException
 from Products.Zuul.catalog.events import IndexingEvent
 
 _STRING_PROPERTY_TYPES = ( 'string', 'text', 'password' )
@@ -529,7 +525,6 @@ class NoLoginImportRM(ImportRM):
         @param app: app
         @type app: string
         """
-        import Products.ZenossStartup
         from Products.Five import zcml
         zcml.load_site()
         import logging

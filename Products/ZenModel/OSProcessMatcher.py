@@ -9,10 +9,6 @@
 
 import logging
 import re
-import os
-import time
-import signal
-from contextlib import contextmanager
 from sre_parse import parse_template
 from md5 import md5
 

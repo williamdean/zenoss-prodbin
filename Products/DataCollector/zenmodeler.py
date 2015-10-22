@@ -1,10 +1,10 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2007, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 
@@ -13,14 +13,14 @@ For instance, find out what Ethernet interfaces and hard disks a server
 has available.
 This information should change much less frequently than performance metrics.
 """
-import Globals
+import Globals  # noqa
 
 # IMPORTANT! The import of the pysamba.twisted.reactor module should come before
 # any other libraries that might possibly use twisted. This will ensure that
 # the proper WmiReactor is installed before anyone else grabs a reference to
 # the wrong reactor.
 try:
-    import pysamba.twisted.reactor
+    import pysamba.twisted.reactor  # noqa
     from ZenPacks.zenoss.WindowsMonitor.WMIClient import WMIClient
     from ZenPacks.zenoss.WindowsMonitor.utils import addNTLMv2Option, setNTLMv2Auth
     USE_WMI = True
@@ -909,7 +909,7 @@ class ZenModeler(PBDaemon):
 
         curtime = time.localtime()
         # match minutes, hours, date, and month fields
-        if all(match_entity(self.startat[a],curtime[b]) 
+        if all(match_entity(self.startat[a],curtime[b])
                    for a,b in ((0,4),(1,3),(2,2),(3,1))):
             dayofweek = curtime[6]+1
             if (match_entity(self.startat[4], dayofweek) or

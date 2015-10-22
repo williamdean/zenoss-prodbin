@@ -9,11 +9,10 @@
 
 
 import time
-import unittest
 
 from DateTime import DateTime
 
-import Globals
+import Globals  # noqa
 
 from Products.ZenModel.ZenStatus import ZenAvailability
 from Products.ZenModel.tests.ZenModelBaseTest import ZenModelBaseTest

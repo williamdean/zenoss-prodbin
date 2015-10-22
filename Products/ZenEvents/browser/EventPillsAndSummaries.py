@@ -14,7 +14,7 @@ from Products import Zuul
 from Products.Five.browser import BrowserView
 from Products.ZenUtils.jsonutils import json
 from Products.ZenModel.DeviceOrganizer import DeviceOrganizer
-from zenoss.protocols.protobufs.zep_pb2 import (STATUS_NEW, STATUS_ACKNOWLEDGED, SEVERITY_CRITICAL,
+from zenoss.protocols.protobufs.zep_pb2 import (SEVERITY_CRITICAL,
                                                 SEVERITY_ERROR, SEVERITY_WARNING, SEVERITY_INFO,
                                                 SEVERITY_DEBUG)
 

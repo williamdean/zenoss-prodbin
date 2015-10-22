@@ -18,7 +18,7 @@ for the '/Discovered' device class. This migrate scripts reduces the
 default zMaxOIDPerRequest in /Discovered to 10"""
 
 import logging
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.Utils import unused
 from Products.ZenModel.migrate import Migrate
 from zExceptions import BadRequest

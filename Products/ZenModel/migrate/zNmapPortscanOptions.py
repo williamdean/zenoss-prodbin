@@ -14,10 +14,11 @@ Change zNmapPortscanOptions to new format without ";",
 allowing Tales expressions
 
 '''
+import logging
+
 import Migrate
 from Acquisition import aq_base
-from Products.ZenModel.DeviceClass import DeviceClass
-import logging
+
 log = logging.getLogger("zen.migrate")
 
 class zNmapPortscanOptions(Migrate.Step):

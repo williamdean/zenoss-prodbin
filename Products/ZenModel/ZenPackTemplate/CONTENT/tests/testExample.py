@@ -41,7 +41,8 @@ class TestExample(BaseTestCase):
         super(TestExample, self).beforeTearDown()
 
 def test_suite():
-    from unittest import TestSuite, makeSuite
+    from unittest import TestSuite
+
     suite = TestSuite()
 
     # Add your BaseTestCase subclasses here to have them executed.

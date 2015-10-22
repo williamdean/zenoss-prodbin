@@ -11,7 +11,7 @@
 from Products.ZenEvents.WhereClause import Text, Select, Compare, Enumerated, DeviceGroup, EventClass
 from Products.ZenEvents.WhereClause import toPython, PythonConversionException
 from ZenModelBaseTest import ZenModelBaseTest
-from zenoss.protocols.protobufs.zep_pb2 import STATUS_NEW, SEVERITY_ERROR, SYSLOG_PRIORITY_DEBUG
+from zenoss.protocols.protobufs.zep_pb2 import STATUS_NEW, SEVERITY_ERROR
 
 
 class TestRuleWhereClauseToPython(ZenModelBaseTest):

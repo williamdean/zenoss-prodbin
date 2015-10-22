@@ -10,10 +10,10 @@
 
 import time
 import logging
-from itertools import takewhile, chain
+from itertools import takewhile
+from collections import defaultdict
 
 from Globals import InitializeClass
-from collections import defaultdict
 from Products.ZenUtils import Map
 from Products.ZenUtils.guid.interfaces import IGlobalIdentifier
 from Products.ZenEvents.ZenEventClasses import Status_Ping, Status_Snmp

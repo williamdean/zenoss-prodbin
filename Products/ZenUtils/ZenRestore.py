@@ -22,7 +22,7 @@ from subprocess import PIPE
 import tarfile
 import ConfigParser
 
-import Globals
+import Globals  # noqa
 from ZCmdBase import ZCmdBase
 from Products.ZenUtils.Utils import zenPath, binPath, requiresDaemonShutdown
 

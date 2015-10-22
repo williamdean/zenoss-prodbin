@@ -20,7 +20,7 @@ from Globals import InitializeClass
 
 from AccessControl import Permissions as permissions
 
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
+from Products.ZenRelations.RelSchema import ToMany
 
 from DeviceOrganizer import DeviceOrganizer
 from ZenPackable import ZenPackable

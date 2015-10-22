@@ -18,12 +18,12 @@ __version__ = "$Revision$"[11:-2]
 
 import os
 import sys
+
 import Migrate
-
 from Products.ZenModel.RRDDataPoint import RRDDataPoint, SEPARATOR
-
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
+from Products.ZenRelations.RelSchema import ToManyCont, ToOne
 from Products.ZenModel.DeviceClass import DeviceClass
+
 DeviceClass._relations = DeviceClass._relations + (
         ("nagiosTemplates", ToManyCont(ToOne,"Products.ZenModel.NagiosTemplate","deviceClass")),
         )

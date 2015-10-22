@@ -14,7 +14,7 @@ ZenPackManager is a Zope Product that helps manage ZenPacks
 
 from Globals import InitializeClass
 from ZenModelRM import ZenModelRM
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
+from Products.ZenRelations.RelSchema import ToManyCont, ToOne
 from AccessControl import ClassSecurityInfo
 from ZenossSecurity import ZEN_MANAGE_DMD
 from Products.ZenMessaging.audit import audit
@@ -235,7 +235,7 @@ class ZenPackManager(ZenModelRM):
         """
         import re
         import time
-        from subprocess import Popen, PIPE, STDOUT
+        from subprocess import Popen, STDOUT
 
         from Products.ZenUtils.Utils import get_temp_dir
 

@@ -14,7 +14,7 @@ logging.basicConfig()
 root = logging.getLogger()
 root.setLevel(logging.CRITICAL)
 
-import Globals
+import Globals  # noqa
 
 from utils import importClasses
 from Products.ZenUtils.Utils import zenPath

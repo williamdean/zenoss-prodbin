@@ -8,12 +8,14 @@
 ##############################################################################
 
 
+import logging
+
 from Globals import InitializeClass
 from Products.ZenModel.ZenModelRM import ZenModelRM
 from ZenMenuItem import ZenMenuItem
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
+from Products.ZenRelations.RelSchema import ToManyCont, ToOne
 from AccessControl import ClassSecurityInfo, Permissions
-import logging
+
 log = logging.getLogger("zen.Menu")
 
 from ZenPackable import ZenPackable

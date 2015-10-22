@@ -8,13 +8,13 @@
 ##############################################################################
 
 import os
+from urllib import unquote
+
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.ZenUtils.guid.interfaces import IGUIDManager
 from Products.ZenUtils.Utils import zenPath, supportBundlePath
-from Products.ZenModel.DataRoot import DataRoot
 from Products import Zuul
-from urllib import unquote
 
 
 class FileUpload(BrowserView):

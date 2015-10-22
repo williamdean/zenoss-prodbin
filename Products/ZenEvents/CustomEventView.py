@@ -1,10 +1,10 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2007, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 
@@ -13,7 +13,6 @@ log = logging.getLogger("zen.EventView")
 
 from Globals import DTMLFile, InitializeClass
 from AccessControl import ClassSecurityInfo
-from Acquisition import aq_parent
 from zope.interface import implements
 
 from Products.ZenModel.ZenModelRM import ZenModelRM
@@ -25,7 +24,7 @@ def manage_addCustomEventView(context, id, REQUEST=None):
     ed = CustomEventView(id)
     context._setObject(id, ed)
     if REQUEST is not None:
-        REQUEST['RESPONSE'].redirect(context.absolute_url() + '/manage_main') 
+        REQUEST['RESPONSE'].redirect(context.absolute_url() + '/manage_main')
 
 addCustomEventView = DTMLFile('dtml/addCustomEventView',globals())
 

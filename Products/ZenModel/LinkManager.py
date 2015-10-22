@@ -28,8 +28,7 @@ from Products.ZenUtils.NetworkTree import NetworkLink
 from Products.Zuul import getFacade
 from Products.ZenEvents.events2.processing import Manager
 from zenoss.protocols.protobufs.zep_pb2 import (SEVERITY_CRITICAL, SEVERITY_ERROR,
-                                                SEVERITY_WARNING, SEVERITY_INFO,
-                                                SEVERITY_DEBUG, SEVERITY_CLEAR)
+                                                SEVERITY_WARNING, SEVERITY_CLEAR)
 from zenoss.protocols.protobufs.zep_pb2 import STATUS_NEW, STATUS_ACKNOWLEDGED
 
 security = ClassSecurityInfo()

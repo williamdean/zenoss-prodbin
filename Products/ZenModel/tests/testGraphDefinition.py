@@ -12,11 +12,6 @@ import os, sys
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
-import re
-import zlib
-from base64 import urlsafe_b64decode
-from urllib import unquote
-
 from ZenModelBaseTest import ZenModelBaseTest
 from Products.ZenModel.RRDTemplate import manage_addRRDTemplate
 

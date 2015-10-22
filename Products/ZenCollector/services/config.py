@@ -27,7 +27,6 @@ from Products.ZenModel.DeviceClass import DeviceClass
 from Products.ZenModel.PerformanceConf import PerformanceConf
 from Products.ZenModel.RRDTemplate import RRDTemplate
 from Products.ZenModel.ZenPack import ZenPack
-from Products.ZenModel.ThresholdClass import ThresholdClass
 from Products.ZenModel.privateobject import is_private
 from Products.ZenUtils.AutoGCObjectReader import gc_cache_every
 from Products.ZenUtils.picklezipper import Zipper

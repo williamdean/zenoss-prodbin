@@ -11,8 +11,7 @@ import os, logging
 
 log = logging.getLogger('zen.testPBDaemon')
 
-import Globals
-import eventlet
+import Globals  # noqa
 
 from Products.ZenUtils.Utils import unused
 unused(Globals)

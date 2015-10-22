@@ -14,7 +14,6 @@ import os
 import sys
 import logging
 import ConfigParser
-import glob
 import optparse
 import subprocess
 import shutil
@@ -27,7 +26,7 @@ from StringIO import StringIO
 from pkg_resources import parse_requirements, Distribution, DistributionNotFound, get_distribution, parse_version, iter_entry_points, EGG_NAME
 from enum import Enum
 
-import Globals
+import Globals  # noqa
 import transaction
 from zenoss.protocols.services import ServiceException
 from ZODB.POSException import ConflictError

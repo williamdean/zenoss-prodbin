@@ -14,11 +14,10 @@ CPU utilization, total RSS and the number of processes that match the
 /Process tree definitions.
 """
 
-import re
 import logging
 log = logging.getLogger("zen.ps")
 
-import Globals
+import Globals  # noqa
 from Products.ZenRRD.CommandParser import CommandParser
 from Products.ZenEvents import Event
 from Products.ZenEvents.ZenEventClasses import Status_OSProcess

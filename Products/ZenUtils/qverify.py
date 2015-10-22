@@ -14,7 +14,7 @@ from optparse import OptionParser
 from amqplib.client_0_8.connection import Connection
 from contextlib import closing
 
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.GlobalConfig import getGlobalConfiguration
 
 import logging

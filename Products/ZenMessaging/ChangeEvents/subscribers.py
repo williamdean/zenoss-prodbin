@@ -9,9 +9,8 @@
 
 
 import logging
+
 from zope.component import adapter
-from zope.container.interfaces import IObjectAddedEvent,\
-    IObjectRemovedEvent
 from Products.ZenMessaging.queuemessaging.publisher import getModelChangePublisher
 from Products.Zuul.catalog.interfaces import IIndexingEvent
 from Products.ZenMessaging.ChangeEvents.interfaces import \

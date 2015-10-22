@@ -1,10 +1,10 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2014, all rights reserved.
 #
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 """
@@ -57,7 +57,7 @@ class ZodbPackMonkeyHelper(object):
 
     def create_reverse_ref_index(self, cursor):
         """
-        Checks if the reverser reference index exists on the 
+        Checks if the reverser reference index exists on the
         reference table and creates the index if it does not exist
         """
         sql = """ SHOW INDEX FROM {0} WHERE key_name="{1}"; """.format(self.REF_TABLE_NAME, self.REVERSE_REF_INDEX)
@@ -218,7 +218,7 @@ class ZodbPackMonkeyHelper(object):
         log.info("{0}{1}".format(text, result.rjust(8)))
 
     def run_post_pack_tests(self, cursor, marked_for_removal, to_remove, oids_not_removed):
-        """ 
+        """
         Checks that the db tables have been left in a consistent state
         """
         if len(to_remove) == 0:
@@ -230,9 +230,9 @@ class ZodbPackMonkeyHelper(object):
         removed = to_remove - to_remove.intersection(not_removed)
         log.info("Validating results: {0} oids marked for removal / {1} oids removed / {2} oids skipped.".format(marked_for_removal, len(to_remove), len(not_removed)))
 
-        # Check tables state, deleted oids must not be in any of the tables and 
+        # Check tables state, deleted oids must not be in any of the tables and
         # not deleted oids must be in all tables
-        # 
+        #
         tables = [ "object_state", "object_refs_added" ]
         for table in tables:
             removed_count = self._get_count_in_table(cursor, removed, table, "zoid", "zoid")
@@ -278,7 +278,7 @@ class ZodbPackMonkeyHelper(object):
 
             data = set(object_state_data) - set(skipped_oids)
             return [ str(oid) for oid, tid in data ]
-            
+
     def export_rolledback_oids_to_file(self, cursor, skipped_oids, filename):
         """ Export to a file the oids that changed between prepack and pack phases """
         try:
@@ -318,7 +318,7 @@ class ZodbPackMonkeyHelper(object):
 MONKEY_HELPER = ZodbPackMonkeyHelper()
 
 try:
-    from relstorage.adapters.packundo import HistoryFreePackUndo
+    from relstorage.adapters.packundo import HistoryFreePackUndo  # noqa
     @monkeypatch('relstorage.adapters.packundo.HistoryFreePackUndo')
     def _pre_pack_main(self, conn, cursor, pack_tid, get_references):
     	"""Determine what to garbage collect."""
@@ -344,7 +344,7 @@ try:
 
         return result
 
-    from relstorage.adapters.packundo import HistoryFreePackUndo
+    from relstorage.adapters.packundo import HistoryFreePackUndo  # noqa
     @monkeypatch('relstorage.adapters.packundo.HistoryFreePackUndo')
     def remove_isolated_oids(self, conn, cursor, grouped_oids, sleep, packed_func, total, oids_processed):
         """
@@ -398,7 +398,7 @@ try:
         return oids_processed
 
 
-    from relstorage.adapters.packundo import HistoryFreePackUndo
+    from relstorage.adapters.packundo import HistoryFreePackUndo  # noqa
     @monkeypatch('relstorage.adapters.packundo.HistoryFreePackUndo')
     def remove_connected_oids(self, conn, cursor, grouped_oids, sleep, packed_func, total, oids_processed):
         """
@@ -466,8 +466,8 @@ try:
             """
 
         return prevent_pke_oids
-            
-    from relstorage.adapters.packundo import HistoryFreePackUndo
+
+    from relstorage.adapters.packundo import HistoryFreePackUndo  # noqa
     @monkeypatch('relstorage.adapters.packundo.HistoryFreePackUndo')
     def pack(self, pack_tid, sleep=None, packed_func=None):
         """ Run garbage collection. Requires the information provided by pre_pack. """

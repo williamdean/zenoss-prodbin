@@ -8,7 +8,7 @@
 ##############################################################################
 
 
-import Globals
+import Globals  # noqa
 import logging
 import traceback
 from decorator import decorator

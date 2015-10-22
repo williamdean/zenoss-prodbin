@@ -19,7 +19,7 @@ __version__ = "$Revision: 1.2 $"[11:-2]
 
 import re
 
-import Globals
+import Globals  # noqa
 
 from Products.ZenUtils.BasicLoader import BasicLoader
 from Products.ZenModel.Manufacturer import manage_addManufacturer

@@ -24,18 +24,13 @@ from Globals import InitializeClass
 from Acquisition import aq_base
 from zope import interface
 
-from Products.ZenRelations.Exceptions import InvalidContainer, ObjectNotFound, RelationshipExistsError, ZenImportError, ZenRelationsError, ZenSchemaError, ZentinelException`
+from Products.ZenRelations.Exceptions import RelationshipExistsError, ZenRelationsError, ZenSchemaError
+
+`
 from Products.ZenRelations.utils import importClass
 
 from PrimaryPathObjectManager import PrimaryPathManager
 
-from zope.event import notify
-from OFS.event import ObjectWillBeAddedEvent
-from OFS.event import ObjectWillBeRemovedEvent
-from zope.container.contained import dispatchToSublocations
-from zope.container.contained import ObjectAddedEvent
-from zope.container.contained import ObjectRemovedEvent
-from zope.container.contained import ContainerModifiedEvent
 
 class IRelationship(interface.Interface):
     """

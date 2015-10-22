@@ -29,7 +29,6 @@ from zExceptions import Unauthorized
 from Products.ZenEvents.ActionRule import ActionRule
 from Products.ZenEvents.CustomEventView import CustomEventView
 from Products.ZenRelations.RelSchema import ToManyCont, ToOne, ToMany
-from Products.ZenUtils import Time
 from Products.ZenUtils.Utils import unused, prepId
 from Products.ZenUtils.guid.interfaces import IGUIDManager
 from Products.ZenUtils import DotNetCommunication

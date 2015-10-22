@@ -12,7 +12,7 @@ __doc__ = 'add the ReportServer to existing systems'
 
 __version__ = "$Revision$"[11:-2]
 
-import Globals
+import Globals  # noqa
 import Migrate
 
 class ReportServer(Migrate.Step):

@@ -8,16 +8,14 @@
 ##############################################################################
 
 
-import os
-
-import Globals
-from Products.ZenModel.PerformanceConf import PerformanceConf
-from Products.ZenModel.MonitorClass import MonitorClass
-from Products.ZenUtils.Utils import unused, rrd_daemon_args, rrd_daemon_retry
+import logging
 
 from twisted.spread import pb
 
-import logging
+import Globals  # noqa
+from Products.ZenModel.PerformanceConf import PerformanceConf
+from Products.ZenModel.MonitorClass import MonitorClass
+from Products.ZenUtils.Utils import unused
 from Products.ZenUtils.deprecated import deprecated
 
 log = logging.getLogger('zen.ThresholdInstance')

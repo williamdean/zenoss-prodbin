@@ -9,8 +9,8 @@
 
 
 import logging
-import re
 from unittest import TestCase, makeSuite
+
 from Products.DataCollector.plugins.zenoss.snmp.HRSWRunMap import HRSWRunMap
 
 log = logging.getLogger("zen.testcases")

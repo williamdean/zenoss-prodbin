@@ -8,18 +8,17 @@
 ##############################################################################
 
 
-import os, sys
+import os
+import sys
+
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
-import time
-import logging
 from zope.interface import implements
 from zope.component import getGlobalSiteManager, adapts
 
-from Products.ZenModel.Exceptions import DeviceExistsError, IpAddressConflict, IpCatalogNotFound, NoIPAddress, NoSnmp, PathNotFoundError, TraceRouteGap, WrongSubnetError, ZenModelError, ZentinelException
 from Products.ZenModel.interfaces import IExpandedLinkProvider
-from Products.ZenModel.Device import Device, manage_createDevice
+from Products.ZenModel.Device import Device
 
 from ZenModelBaseTest import ZenModelBaseTest
 

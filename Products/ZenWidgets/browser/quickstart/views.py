@@ -9,6 +9,7 @@
 
 
 import re
+
 import logging
 import cgi
 from Acquisition import aq_base
@@ -55,7 +56,7 @@ class DeviceAddView(BrowserView):
     @property
     def hasLDAPInstalled(self):
         try:
-            import ZenPacks.zenoss.LDAPAuthenticator
+            import ZenPacks.zenoss.LDAPAuthenticator  # noqa
             # return javascript true/false
             return "true"
         except ImportError:

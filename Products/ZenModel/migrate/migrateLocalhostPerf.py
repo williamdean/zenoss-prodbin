@@ -24,9 +24,9 @@ class MigrateLocalhostPerf(Migrate.Step):
 
     def cutover(self, dmd):
         try:
-            from ZenPacks.zenoss.DistributedCollector import \
-                addHubRoot, addLocalhostHub, convertLocalhostHubToCC, convertAllMonitors, \
-                convertMonitor, convertLocalhostMonitorToCC
+            from ZenPacks.zenoss.DistributedCollector import (  # noqa
+                addHubRoot, addLocalhostHub, convertLocalhostHubToCC,
+                convertAllMonitors, convertMonitor, convertLocalhostMonitorToCC)
         except ImportError:
             log.info("Distributed collector module not found, skipping")
         else:

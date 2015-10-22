@@ -9,12 +9,12 @@
 
 import sys
 import time
+import logging
+
 import Migrate
 
-import logging
 log = logging.getLogger('zen.migrate')
 
-from Products.AdvancedQuery import In
 from Products.Zuul.interfaces import ICatalogTool
 from Products.ZCatalog.Catalog import CatalogError
 from Products.ZenUtils.Search import makeCaseInsensitiveKeywordIndex

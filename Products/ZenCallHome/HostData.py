@@ -9,12 +9,10 @@
 
 
 import string
-import time
 import os
 import math
 import platform
 import socket
-
 from subprocess import Popen, PIPE
 from Products.ZenCallHome import IHostData, IZenossEnvData
 from zope.interface import implements

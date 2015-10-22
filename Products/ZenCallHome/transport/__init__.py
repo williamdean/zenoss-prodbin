@@ -14,16 +14,13 @@ __doc__='''Callhome mechanism. Reports anonymous statistics back to Zenoss, Inc.
 import base64
 import cPickle
 import logging
-import os
 import random
 import string
 import time
 import zlib
 
-import transaction
 from persistent.dict import PersistentDict
 from zope.component import getUtilitiesFor
-
 from Globals import Persistent
 from Products.ZenCallHome.transport.crypt import encrypt, decrypt
 from Products.ZenCallHome.transport.interfaces import IReturnPayloadProcessor

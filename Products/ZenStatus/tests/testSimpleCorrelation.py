@@ -8,20 +8,12 @@
 ##############################################################################
 
 
-import json
-from StringIO import StringIO
-from copy import copy
-from pprint import pprint
-
-import Globals
-import zope.component
+import Globals  # noqa
+import logging
 
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
-
 from Products.ZenStatus.SimpleCorrelator import simpleCorrelator
 from Products.ZenStatus import TraceHop
-
-import logging
 
 LOG = logging.getLogger('zenstatus.tests')
 

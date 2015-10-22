@@ -6,7 +6,6 @@
 # License.zenoss under the directory where your Zenoss product is installed.
 # 
 ##############################################################################
-import os
 import logging
 def monkey_patch_rotatingfilehandler():
   try:
@@ -23,8 +22,8 @@ from twisted.internet import defer
 import time
 from datetime import datetime, timedelta
 
-import Globals
-from zope.component import getUtility, provideUtility, adapter
+import Globals  # noqa
+from zope.component import getUtility, provideUtility
 
 from zope.interface import implements, implementer
 from zope.component.event import objectEventNotify

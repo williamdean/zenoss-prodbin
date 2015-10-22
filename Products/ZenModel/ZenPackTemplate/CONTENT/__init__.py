@@ -12,7 +12,7 @@
 # This makes this the perfect place to alter lower-level stock behavior
 # through monkey-patching.
 
-# import Globals
+# import Globals  # noqa
 #
 # from Products.ZenModel.ZenPack import ZenPack as ZenPackBase
 # from Products.ZenUtils.Utils import unused

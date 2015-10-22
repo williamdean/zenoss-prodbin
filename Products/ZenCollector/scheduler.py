@@ -19,7 +19,6 @@ single device or other monitored object.
 
 import logging
 import math
-import signal
 import time
 from StringIO import StringIO
 

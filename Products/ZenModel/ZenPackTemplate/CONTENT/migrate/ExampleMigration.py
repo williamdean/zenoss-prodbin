@@ -1,7 +1,7 @@
 import logging
 log = logging.getLogger('zen.migrate')
 
-import Globals
+import Globals  # noqa
 
 from Products.ZenModel.ZenPack import ZenPackMigration
 from Products.ZenModel.migrate.Migrate import Version

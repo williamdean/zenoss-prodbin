@@ -17,15 +17,13 @@ and store process performance in RRD files.
 
 import logging
 import sys
-import re
 from pprint import pformat
 import os.path
 
-import Globals
-
-import zope.component
+import Globals  # noqa
 import zope.interface
 
+import zope.component
 from Products.ZenCollector.daemon import CollectorDaemon
 from Products.ZenCollector.interfaces import ICollectorPreferences,\
     IScheduledTask, IEventService, IDataService, IConfigurationListener
@@ -37,7 +35,7 @@ from Products.ZenEvents.ZenEventClasses import Status_Snmp, Status_OSProcess,\
 from Products.ZenModel.OSProcessMatcher import OSProcessMatcher
 from Products.ZenModel.OSProcessState import determineProcessState
 from Products.ZenUtils.observable import ObservableMixin
-from Products.ZenUtils.Utils import prepId as globalPrepId
+
 
 # We retrieve our configuration data remotely via a Twisted PerspectiveBroker
 # connection. To do so, we need to import the class that will be used by the

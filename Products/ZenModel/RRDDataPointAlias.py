@@ -15,8 +15,8 @@ a pair of a name and an rpn formula.  The formula should convert the datapoint
 to the form represented by the name.
 
 $Id:$"""
-import Globals
-from AccessControl import ClassSecurityInfo, Permissions
+import Globals  # noqa
+from AccessControl import Permissions
 
 from Products.ZenUtils.ZenTales import talesEvalStr
 from Products.ZenRelations.RelSchema import ToOne, ToManyCont

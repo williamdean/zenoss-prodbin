@@ -7,7 +7,7 @@
 #
 ##############################################################################
 
-import Globals
+import Globals  # noqa
 import time
 import threading
 import Queue

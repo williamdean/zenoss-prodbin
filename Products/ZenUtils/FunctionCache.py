@@ -8,14 +8,13 @@
 ###########################################################################
 
 import hashlib
-import memcache
 import operator
 import cPickle as pickle
+import logging
 
-import logging 
+import memcache
+
 _LOG = logging.getLogger("zen.zenutils.functioncache")
-
-from zope.component import getGlobalSiteManager
 
 CACHE_NOT_FOUND = object()
 
@@ -95,7 +94,7 @@ class FunctionCache(object):
             return None, None
 
         if FunctionCache._CONFIG is None:
-            import Globals
+            import Globals  # noqa
             from Products.ZenUtils.GlobalConfig import getGlobalConfiguration
             FunctionCache._CONFIG = getGlobalConfiguration()
 

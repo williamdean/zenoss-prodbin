@@ -12,16 +12,10 @@ import os, sys
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
-import time
-
-from DateTime import DateTime
-
 from Acquisition import aq_base
-from Products.ZenModel.Exceptions import DeviceExistsError, IpAddressConflict, IpCatalogNotFound, NoIPAddress, NoSnmp, PathNotFoundError, TraceRouteGap, WrongSubnetError, ZenModelError, ZentinelException
 
 from ZenModelBaseTest import ZenModelBaseTest
 from Products.ZenModel.IpService import IpService
-from Products.ZenRelations.ToManyContRelationship import ToManyContRelationship
 from Products.ZenRelations.RelSchema import ToOne, ToManyCont
 
 

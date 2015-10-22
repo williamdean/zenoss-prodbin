@@ -1,20 +1,17 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2009, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
-
-import Globals
+import Globals  # noqa
 import zope.interface
 
-from twisted.internet import defer, reactor
-
 from Products.ZenCollector.interfaces import IScheduledTask
-from Products.ZenCollector.scheduler import CallableTask, Scheduler, TaskStates
+from Products.ZenCollector.scheduler import Scheduler
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 from Products.ZenUtils.observable import ObservableMixin
 

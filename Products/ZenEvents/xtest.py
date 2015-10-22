@@ -15,7 +15,7 @@ Sends test events to zenoss via xml-rpc.
 Events can be specified on the command line or read from a file.
 '''
 
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.CmdBase import CmdBase
 import xmlrpclib
 import time

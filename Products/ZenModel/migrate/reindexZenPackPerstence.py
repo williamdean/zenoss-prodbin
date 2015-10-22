@@ -8,7 +8,7 @@
 ##############################################################################
 
 
-import Globals
+import Globals  # noqa
 import Migrate
 from Products.ZenModel.RRDTemplate import YieldAllRRDTemplates
 from Products.ZenModel.ZenPackPersistence import ZenPackPersistence

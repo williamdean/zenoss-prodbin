@@ -10,9 +10,7 @@
 
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
-
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
-
+from Products.ZenRelations.RelSchema import ToManyCont, ToOne
 from ZenModelRM import ZenModelRM
 
 

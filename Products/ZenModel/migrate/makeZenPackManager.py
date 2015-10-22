@@ -11,7 +11,7 @@
 __doc__='''
 
 '''
-import Globals
+import Globals  # noqa
 import Migrate
 from Products.ZenModel.ZenPackManager import manage_addZenPackManager
 from Products.ZenModel.ZenPackPersistence import ZENPACK_PERSISTENCE_CATALOG, \

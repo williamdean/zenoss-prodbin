@@ -17,7 +17,7 @@ import sys
 import re
 import transaction
 import logging
-import Globals
+import Globals  # noqa
 
 from Products.ZenUtils.ZCmdBase import ZCmdBase
 from Products.ZenUtils.Utils import zenPath

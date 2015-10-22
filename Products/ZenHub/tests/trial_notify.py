@@ -23,7 +23,7 @@ or with more detailed logging...
 
 import os
 import logging
-import Globals
+import Globals  # noqa
 from twisted.trial import unittest
 from twisted.internet import reactor, defer, base
 from twisted.python import failure

@@ -44,10 +44,9 @@ from Products.Zuul.catalog.events import IndexingEvent
 from Products.ZenUtils.IpUtil import isip, getHostByName
 from Products.ZenUtils.Utils import getObjectsFromCatalog
 from Products.ZenEvents.Event import Event
-from Products.ZenUtils.Utils import binPath, zenPath, supportBundlePath
+from Products.ZenUtils.Utils import binPath, supportBundlePath
 from Acquisition import aq_base
 from Products.Zuul.infos.metricserver import MultiContextMetricServiceGraphDefinition
-
 
 iszprop = re.compile("z[A-Z]").match
 log = logging.getLogger('zen.DeviceFacade')

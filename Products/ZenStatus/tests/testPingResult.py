@@ -8,19 +8,12 @@
 ##############################################################################
 
 
-from StringIO import StringIO
-from copy import copy
-from pprint import pprint
-
-import Globals
-import zope.component
-
-from Products.ZenTestCase.BaseTestCase import BaseTestCase
-
-from Products.ZenStatus.nmap import PingResult
-
+import Globals  # noqa
 import os.path
 import math
+
+from Products.ZenTestCase.BaseTestCase import BaseTestCase
+from Products.ZenStatus.nmap import PingResult
 
 NO_TRACE = tuple()
 NAN = float('nan')

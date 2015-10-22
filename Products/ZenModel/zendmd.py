@@ -14,8 +14,6 @@ import os
 import os.path
 import code
 import atexit
-import logging
-import transaction
 from subprocess import Popen, PIPE
 from optparse import OptionParser
 import inspect
@@ -23,9 +21,13 @@ import re
 from collections import defaultdict
 from itertools import izip
 from pprint import pformat
-from Acquisition import aq_chain, aq_base
+
 from zope.interface import implements
+
+import transaction
+from Acquisition import aq_chain, aq_base
 from zope.event import notify
+
 
 
 # Parse the command line for host and port; have to do it before Zope
@@ -179,8 +181,6 @@ def _customStuff():
     import socket
     from transaction import commit
     from pprint import pprint
-    from Products.ZenUtils.Utils import setLogLevel
-    from Products.Zuul import getFacade, listFacades
 
     # Connect to the database, set everything up
     app = Zope2.app()
@@ -193,7 +193,6 @@ def _customStuff():
             user = app.zport.acl_users.getUserById(username)
         user = user.__of__(utool)
         newSecurityManager(None, user)
-        from AccessControl.Implementation import setImplementation
         #Chip's pitched battle against segfault.
         #import pdb;pdb.set_trace()
         #setImplementation('PYTHON')

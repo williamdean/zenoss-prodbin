@@ -15,16 +15,13 @@ would like to run these tests from python, simply to the following:
     python ZenUtils/Version.py
 '''
 import unittest
-from zope.interface import implements
-from zope.component.interfaces import IObjectEvent
-from Products.Zuul.catalog.events import IndexingEvent
 
+from Products.Zuul.catalog.events import IndexingEvent
 from OFS.SimpleItem import SimpleItem
 from OFS.event import ObjectWillBeRemovedEvent
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 from zope.component import provideHandler
 from zope.event import notify
-
 from Products.ZenUtils.events import paused, pausedAndOptimizedIndexing
 
 

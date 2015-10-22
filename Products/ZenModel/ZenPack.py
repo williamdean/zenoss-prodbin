@@ -17,12 +17,7 @@ log = logging.getLogger('zen.ZenPack')
 
 import datetime
 import glob
-import json
 import string
-import subprocess
-import os
-import os.path
-import posixpath
 import sys
 import shutil
 import zipfile
@@ -32,8 +27,8 @@ from StringIO import StringIO
 from Acquisition import aq_base
 from Globals import InitializeClass
 from Products.ZenModel.ZenModelRM import ZenModelRM
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
-from Products.ZenUtils.Utils import importClass, zenPath, varPath
+from Products.ZenRelations.RelSchema import ToMany, ToManyCont, ToOne
+from Products.ZenUtils.Utils import importClass, varPath
 from Products.ZenUtils.Version import getVersionTupleFromString
 from Products.ZenUtils.Version import Version as VersionBase
 from Products.ZenUtils.PkgResources import pkg_resources
@@ -42,7 +37,8 @@ from Products.ZenUtils.controlplane.application import getConnectionSettings
 from Products.ZenModel import ExampleLicenses
 from Products.ZenModel.DeviceClass import DeviceClass
 from Products.ZenModel.RRDTemplate import RRDTemplate
-from Products.ZenModel.ZenPackLoader import CONFIG_FILE, CONFIG_SECTION_ABOUT, ConfigFile, ConfigParser, EventDetailItem, EventDetailItemHandler, EventDetailItemSet, Globals, IGUIDManager, ReportLoader, ServiceResponseError, ZPLAbout, ZPLBin, ZPLDaemons, ZPLDataSources, ZPLLibExec, ZPLLibraries, ZPLModelers, ZPLObject, ZPLReport, ZPLSkins, ZPTriggerAction, ZPZep, ZenPackLoader, binPath, branchAfter, findDirectories, findFiles, from_dict, getFacade, json, log, logging, make_parser, os, subprocess, zenPath
+from Products.ZenModel.ZenPackLoader import CONFIG_FILE, CONFIG_SECTION_ABOUT, ConfigParser, ZPLAbout, ZPLBin, ZPLDaemons, ZPLDataSources, ZPLLibExec, ZPLLibraries, \
+    ZPLObject, ZPLReport, ZPLSkins, ZPTriggerAction, ZPZep, json, log, os, subprocess, zenPath
 from Products.ZenWidgets import messaging
 from AccessControl import ClassSecurityInfo
 from ZenossSecurity import ZEN_MANAGE_DMD
@@ -749,7 +745,7 @@ class ZenPack(ZenModelRM):
             fp = file(init, 'w')
             fp.write(
 '''
-import Globals
+import Globals  # noqa
 from Products.CMFCore.DirectoryView import registerDirectory
 registerDirectory("skins", globals())
 ''')

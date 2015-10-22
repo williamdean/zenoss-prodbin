@@ -10,7 +10,7 @@ import unittest
 import doctest
 import transaction
 import socket
-import Globals
+import Globals  # noqa  # noqa
 import os.path
 
 from Zope2.App import zcml as _zcml
@@ -38,7 +38,7 @@ def load_unittest_site(force=False):
         return
     _zcml._initialized = True
 
-    import Globals
+    import Globals  # noqa  # noqa
     Globals.INSTANCE_HOME
 
     # load instance site configuration file
@@ -101,7 +101,6 @@ class ZenDocTestRunner(object):
 
     def setUp(self):
         zope.component.testing.setUp(self.__class__)
-        import Products.ZenossStartup
         load_unittest_site(force=True)
         zope.component.provideAdapter(DefaultTraversable, (None,))
 

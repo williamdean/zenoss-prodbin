@@ -16,7 +16,7 @@ restart it.
 
 '''
 
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.Utils import zenPath
 import logging
 

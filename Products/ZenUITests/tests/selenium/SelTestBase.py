@@ -14,12 +14,15 @@
 # Adam Modlin and Nate Avers
 #
 
-import time, os, sys
+import time
+import os
+import sys
 import unittest
-from util.selTestUtils import TimeoutError, do_command_byname, getByValue
-from util.Input import InputPage
 
+from util.selTestUtils import TimeoutError, getByValue
+from util.Input import InputPage
 from util.selenium import selenium
+
 
 
 ### BEGIN GLOBAL DEFS ###

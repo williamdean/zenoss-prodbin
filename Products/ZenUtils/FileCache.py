@@ -1,27 +1,27 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2010, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 
 ## Based on Python recipe http://code.activestate.com/recipes/543263/ (r1)
 # by Brian O. Bush, Thu 24-Jan-2008 06:53 bushbo
 
-import os, sys, pickle, base64, threading, glob
+import os, pickle, base64, threading, glob
 import tempfile
 
 _DEFAULT_NOT_SPECIFIED = object()
 
 # This file cache is thread-safe
 class FileCache(object):
-    def __init__(self, path, protocol=-1): 
+    def __init__(self, path, protocol=-1):
         self.path = path # path assumed existing; check externally
-        if not os.path.exists(self.path): 
-            os.makedirs(self.path)        
+        if not os.path.exists(self.path):
+            os.makedirs(self.path)
         self.gen_key = lambda x: '%s.pickle' % base64.b64encode(x)
         self.lock = threading.Lock()
         self._pickleProtocol = protocol
@@ -129,12 +129,12 @@ if __name__=='__main__':
     sites = [Site('cnn.com'), Site('kd7yhr.org', 1), Site('asdf.com', 3)]
     # We will use the site url as the key for our cache
     # Comment out the next two lines to test cache reading
-    for site in sites:    
+    for site in sites:
         cache[site.name] = site
     testitemname = sites[-1].name
 
     entry = cache.get(testitemname)
-    if entry: 
+    if entry:
         print type(entry), entry
 
     print cache.keys()

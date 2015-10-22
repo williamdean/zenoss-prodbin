@@ -15,10 +15,9 @@ Class for turning syslog events into Zenoss Events
 import re
 import logging
 slog = logging.getLogger("zen.Syslog")
-import socket
 
-import Globals
-from Products.ZenEvents.syslog_h import LOG_ALERT, LOG_AUTH, LOG_AUTHPRIV, LOG_CRITICAL, LOG_CRON, LOG_DAEMON, LOG_DEBUG, LOG_EMERGENCY, LOG_ERRROR, LOG_FAC, LOG_FACMASK, LOG_FTP, LOG_INFO, LOG_KERN, LOG_LOCAL0, LOG_LOCAL1, LOG_LOCAL2, LOG_LOCAL3, LOG_LOCAL4, LOG_LOCAL5, LOG_LOCAL6, LOG_LOCAL7, LOG_LPR, LOG_MAIL, LOG_MAKEPRI, LOG_MASK, LOG_NEWS, LOG_NFACILITIES, LOG_NOTICE, LOG_PRI, LOG_PRIMASK, LOG_SYSLOG, LOG_UNPACK, LOG_UPTO, LOG_USER, LOG_UUCP, LOG_WARNING, fac_names, fac_values, pri_names, pri_values
+import Globals  # noqa
+from Products.ZenEvents.syslog_h import LOG_KERN, LOG_UNPACK
 from Products.ZenUtils.IpUtil import isip
 
 

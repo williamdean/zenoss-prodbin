@@ -8,16 +8,13 @@
 ##############################################################################
 
 
-import os.path
 from zope.component import getGlobalSiteManager
 from zope.component import adapts
 from zope.interface import implements
-from zope.interface import providedBy
 
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 
 from Products.Zuul.search.interfaces import ISearchQueryParser
-from Products.Zuul.search.interfaces import IParsedQuery
 from Products.Zuul.search.interfaces import ISearchProvider
 from Products.Zuul.search.facades import SearchFacade
 from Products.Zuul.search.facades import ParsedQuery

@@ -18,7 +18,7 @@ import StringIO
 import re
 import datetime
 
-import Globals
+import Globals  # noqa
 
 from Products.ZenUtils.ZCmdBase import ZCmdBase
 

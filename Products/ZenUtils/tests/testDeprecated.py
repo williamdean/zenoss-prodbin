@@ -17,7 +17,7 @@ If you would like to run these tests from python, simply do the following:
 import unittest
 import os
 import os.path
-import Globals
+import Globals  # noqa
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 from Products.ZenUtils.Utils import zenPath  # TODO: this test shouldn't rely on zenPath
 from Products.ZenUtils.deprecated import deprecated, DeprecatedLogger

@@ -12,7 +12,7 @@ import os
 import re
 import json
 import logging
-import Globals
+import Globals  # noqa
 from zope.interface import implements
 from Products.Five.browser import BrowserView
 from Products.Five.viewlet.manager import ViewletManagerBase

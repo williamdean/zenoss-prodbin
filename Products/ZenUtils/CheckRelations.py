@@ -19,7 +19,7 @@ __version__ = "$Revision: 1.2 $"[11:-2]
 
 import transaction
 
-import Globals
+import Globals  # noqa
 
 from Products.ZenUtils.Utils import getAllConfmonObjects
 

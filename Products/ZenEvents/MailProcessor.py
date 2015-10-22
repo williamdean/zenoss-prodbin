@@ -21,8 +21,6 @@ import rfc822
 import calendar
 from datetime import tzinfo, timedelta, datetime
 
-import Globals
-
 from Products.ZenEvents.Event import Event
 from Products.ZenUtils.Utils import unused
 from Products.ZenUtils.ZenScriptBase import ZenScriptBase

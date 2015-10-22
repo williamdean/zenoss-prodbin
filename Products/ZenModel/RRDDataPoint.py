@@ -18,16 +18,16 @@ and builds the nessesary DEF and CDEF statements for it.
 import logging
 log = logging.getLogger('zen.RRDDatapoint')
 
-import Globals
+import Globals  # noqa
 from AccessControl import ClassSecurityInfo, Permissions
-from Products.ZenModel.ZenossSecurity import ZEN_VIEW, ZEN_MANAGE_DMD
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
+from Products.ZenModel.ZenossSecurity import ZEN_MANAGE_DMD
+from Products.ZenRelations.RelSchema import ToManyCont, ToOne
 from Products.ZenWidgets import messaging
 
 from ZenModelRM import ZenModelRM
 from ZenPackable import ZenPackable
 
-from Products.ZenUtils.Utils import unused, getDisplayType
+from Products.ZenUtils.Utils import unused
 from Products.ZenUtils.deprecated import deprecated
 from Products.ZenModel.RRDDataPointAlias import manage_addDataPointAlias
 

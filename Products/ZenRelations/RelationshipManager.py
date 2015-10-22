@@ -29,14 +29,12 @@ from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 from Acquisition import aq_base
 from App.Management import Tabs
-import OFS.subscribers
 import zope.interface
 import zope.component
 
 from OFS.interfaces import IItem
 
-from RelSchema import RelSchema, ToMany, ToManyCont, ToOne
-from Exceptions import InvalidContainer, ObjectNotFound, RelationshipExistsError, ZenImportError, ZenRelationsError, ZenSchemaError, ZentinelException, zenmarker
+from Exceptions import ZenSchemaError, zenmarker
 
 from Products.ZenUtils.Utils import unused
 from Products.ZenModel.interfaces import IZenDocProvider

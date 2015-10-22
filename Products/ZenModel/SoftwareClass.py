@@ -19,8 +19,6 @@ __version__ = "$Revision: 1.5 $"[11:-2]
 from Globals import DTMLFile
 from Globals import InitializeClass
 
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
-
 from ProductClass import ProductClass
 
 def manage_addSoftwareClass(context, id, title = None, REQUEST = None):

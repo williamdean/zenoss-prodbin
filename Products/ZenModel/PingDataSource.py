@@ -14,7 +14,7 @@ Defines datasource for zenping
 """
 
 from Globals import InitializeClass
-from AccessControl import ClassSecurityInfo, Permissions
+from AccessControl import ClassSecurityInfo
 import Products.ZenModel.RRDDataSource as RRDDataSource
 
 PING_DATAPOINTS = (

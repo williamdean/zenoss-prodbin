@@ -16,7 +16,7 @@ from optparse import OptionParser
 from subprocess import Popen, PIPE
 import re
 import logging
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.Utils import zenPath
 
 logging.basicConfig(level=logging.INFO)

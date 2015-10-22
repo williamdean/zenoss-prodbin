@@ -18,9 +18,8 @@ $Id: DmdBuilder.py,v 1.11 2004/04/06 22:33:07 edahl Exp $"""
 __version__ = "$Revision: 1.11 $"[11:-2]
 
 import os
-import Globals
+import Globals  # noqa
 import transaction
-import subprocess
 import sys
 
 from Products.ZenUtils.Utils import zenPath

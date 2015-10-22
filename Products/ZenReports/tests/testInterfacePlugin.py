@@ -8,13 +8,11 @@
 ##############################################################################
 
 
-from datetime import datetime
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
-from Products.ZenModel.tests.RRDTestUtils import DEFAULT_DSDP_MAP, TEST_TEMPLATE, addAlias, addAliases, assertAliasDatapointInMap, createTemplate, removeTemplate
-from Products.ZenReports.AliasPlugin import AliasPlugin, PythonColumnHandler, RRDColumnHandler, Column
 from Products.ZenReports.plugins.interface import interface
-from Products.ZenModel.tests.RRDTestUtils import DEFAULT_DSDP_MAP, TEST_TEMPLATE, addAlias, addAliases, assertAliasDatapointInMap, createTemplate, removeTemplate
-from Products.ZenReports.tests.ReportTestUtils import attributeAsRRDValue, replaceGetRRDValue, createTestDevice, getDeviceIdFromRecord, getComponentIdFromRecord, assertRecordIsCorrect
+from Products.ZenModel.tests.RRDTestUtils import addAlias, createTemplate
+from Products.ZenReports.tests.ReportTestUtils import attributeAsRRDValue, replaceGetRRDValue, createTestDevice, \
+    getComponentIdFromRecord, assertRecordIsCorrect
 
 def createInterface( device, id, speed, inputOctets, outputOctets, 
                       properties={} ):

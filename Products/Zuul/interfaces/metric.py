@@ -6,7 +6,7 @@
 # License.zenoss under the directory where your Zenoss product is installed.
 #
 
-from Products.Zuul.interfaces import IInfo, IFacade
+from Products.Zuul.interfaces import IFacade
 
 class IMetricFacade(IFacade):
     pass

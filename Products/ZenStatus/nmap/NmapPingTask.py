@@ -16,29 +16,20 @@ Pings a all devices in the current device list.
 import logging
 log = logging.getLogger("zen.NmapPingTask")
 import tempfile
-import subprocess
-import math
-from twisted.internet import utils
 from twisted.internet import task as twistedTask
 from twisted.internet import defer
 from twisted.internet import reactor
-import os.path
-from cStringIO import StringIO
-import stat
 from collections import defaultdict
 from datetime import datetime, timedelta
 
-import Globals
+import Globals  # noqa
 from zope import interface
 from zope import component
 from Products import ZenCollector
 from Products.ZenCollector.tasks import BaseTask, TaskStates
 from Products.ZenCollector import interfaces
-from Products.ZenCollector.tasks import SimpleTaskFactory
-from Products.ZenUtils.Utils import zenPath
-from Products.ZenEvents import ZenEventClasses 
+from Products.ZenEvents import ZenEventClasses
 from Products.ZenUtils.Utils import unused
-from zenoss.protocols.protobufs import zep_pb2 as events
 
 # imports from within ZenStatus
 from Products.ZenStatus import PingTask

@@ -8,13 +8,14 @@
 ##############################################################################
 
 
-import os, sys
+import os
+import sys
+
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
 import logging
 
-from Products.ZenModel.Exceptions import DeviceExistsError, IpAddressConflict, IpCatalogNotFound, NoIPAddress, NoSnmp, PathNotFoundError, TraceRouteGap, WrongSubnetError, ZenModelError, ZentinelException
 from Products.ZenModel.IpInterface import IpInterface
 from Products.ZenModel.IpRouteEntry import IpRouteEntry
 

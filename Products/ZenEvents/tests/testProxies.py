@@ -1,21 +1,21 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2011, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 
 import unittest
 
-import pkg_resources # Import this so zenoss.protocols will be found
+# Import this so zenoss.protocols will be found
+import pkg_resources  # noqa
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 from zenoss.protocols.jsonformat import from_dict
 from Products.ZenEvents.events2.proxy import ZepRawEventProxy, EventProxy
-from zenoss.protocols.protobufs.zep_pb2 import (EventSummary, Event, EventNote, EventSummaryUpdate,
-    EventSort, EventSummaryUpdateRequest, EventSummaryRequest, EventQuery, EventDetailSet, ZepRawEvent)
+from zenoss.protocols.protobufs.zep_pb2 import (Event, ZepRawEvent)
 
 class EventProxyTagsAndDetailsTest(BaseTestCase):
     initialEvent = {

@@ -10,12 +10,10 @@
 
 import logging
 import pprint
-import sys
 from md5 import md5
 
 log = logging.getLogger('zen.testzenprocess')
 
-import re
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 from Products.ZenRRD.zenprocess import ZenProcessTask
 from Products.ZenUtils.Utils import zenPath

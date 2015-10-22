@@ -8,10 +8,10 @@
 ##############################################################################
 
 
-import Globals
+import Globals  # noqa
 import logging
+
 from zope.component import getUtility
-from twisted.internet import defer
 from zenoss.protocols.interfaces import IAMQPConnectionInfo, IQueueSchema
 from zenoss.protocols.twisted.amqp import AMQPFactory
 from interfaces import IQueueConsumerTask

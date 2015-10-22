@@ -27,7 +27,7 @@ import signal
 from copy import copy
 log = logging.getLogger("zen.zentestcommand")
 
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.ZenScriptBase import ZenScriptBase
 from Products.DataCollector.SshClient import SshClient
 

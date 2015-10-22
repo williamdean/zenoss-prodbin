@@ -11,7 +11,7 @@ import os
 import re
 import cgitb
 from cStringIO import StringIO
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.Utils import unused, zenPath
 
 unused(Globals)

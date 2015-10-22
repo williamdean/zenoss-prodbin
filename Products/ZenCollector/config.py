@@ -1,10 +1,10 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2009, 2010, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 
@@ -17,11 +17,9 @@ import logging
 
 log = logging.getLogger("zen.collector.config")
 import time
-from functools import partial
 
 import zope.component
 import zope.interface
-from zope.interface import implements
 from twisted.internet import defer
 from twisted.python.failure import Failure
 
@@ -31,8 +29,7 @@ from Products.ZenCollector.interfaces import ICollector,\
                                              IConfigurationProxy,\
                                              IScheduledTask,\
                                              IDataService,\
-                                             IEventService,\
-                                             IConfigurationDispatchingFilter
+                                             IEventService
 from Products.ZenCollector.tasks import TaskStates
 from Products.ZenUtils.observable import ObservableMixin
 from Products.ZenHub.PBDaemon import HubDown
@@ -118,7 +115,7 @@ class ConfigurationProxy(object):
         log.debug("Fetching device names")
         d = serviceProxy.callRemote('getDeviceNames', options=prefs.options.__dict__)
         def printNames (names):
-            log.debug("workerid %s Fetched Names %s %s", prefs.options.workerid, len(names), names)  
+            log.debug("workerid %s Fetched Names %s %s", prefs.options.workerid, len(names), names)
             return names
         d.addCallback(printNames)
         return d

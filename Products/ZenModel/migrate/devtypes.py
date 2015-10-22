@@ -15,7 +15,7 @@ Set zRouteMapMaxRoutes defaults
 $Id:$
 '''
 import Migrate
-import zExceptions
+
 
 class AddDeviceClassDescriptionAndProtocol(Migrate.Step):
     version = Migrate.Version(2, 4, 0)

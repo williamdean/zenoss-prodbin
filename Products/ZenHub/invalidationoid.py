@@ -9,10 +9,10 @@
 
 
 import logging
+
 from zope.interface import implements
+
 from zope.component import adapts
-from Products.ZenModel.DeviceComponent import DeviceComponent
-from Products.ZenModel.DeviceHW import DeviceHW
 from Products.ZenRelations.PrimaryPathObjectManager import PrimaryPathObjectManager
 from Products.ZenHub.interfaces import IInvalidationOid
 

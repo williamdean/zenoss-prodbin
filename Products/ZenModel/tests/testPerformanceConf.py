@@ -8,11 +8,13 @@
 ##############################################################################
 
 
-import os, sys
+import os
+import sys
+
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
-from Products.ZenModel.PerformanceConf import PerformanceConf, manage_addPerformanceConf
+from Products.ZenModel.PerformanceConf import manage_addPerformanceConf
 
 from ZenModelBaseTest import ZenModelBaseTest
 

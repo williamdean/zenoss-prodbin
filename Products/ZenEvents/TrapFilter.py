@@ -13,7 +13,6 @@ __doc__ = """zentrap
 Filters SNMP traps.
 """
 
-import sys
 import logging
 import os.path
 
@@ -26,7 +25,7 @@ from Products.ZenCollector.interfaces import ICollector, IEventService
 from Products.ZenHub.interfaces import ICollectorEventTransformer, \
     TRANSFORM_CONTINUE, \
     TRANSFORM_DROP
-from Products.ZenUtils.Utils import unused, zenPath
+from Products.ZenUtils.Utils import zenPath
 
 log = logging.getLogger("zen.zentrap")
 

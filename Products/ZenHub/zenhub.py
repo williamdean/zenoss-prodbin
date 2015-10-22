@@ -14,14 +14,12 @@
 Provide remote, authenticated, and possibly encrypted two-way
 communications with the Model and Event databases.
 """
-import Globals
+import Globals  # noqa
 
 if __name__ == "__main__":
     # Install the 'best' reactor available, BUT only if run as a script.
     from Products.ZenHub import installReactor
     installReactor()
-
-from XmlRpcService import XmlRpcService
 
 import collections
 import heapq
@@ -32,10 +30,12 @@ import os
 import subprocess
 import itertools
 from random import choice
-from zope.component import getAdapters, subscribers
 
 from twisted.cred import portal, checkers, credentials
 from twisted.spread import pb, banana
+
+from XmlRpcService import XmlRpcService
+from zope.component import subscribers
 banana.SIZE_LIMIT = 1024 * 1024 * 10
 
 from twisted.internet import reactor, protocol, defer
@@ -48,7 +48,6 @@ from zope.component import getUtility, getUtilitiesFor, adapts
 from ZODB.POSException import POSKeyError
 
 from Products.DataCollector.Plugins import loadPlugins
-from Products.Five import zcml
 from Products.ZenUtils.ZCmdBase import ZCmdBase
 from Products.ZenUtils.Utils import zenPath, getExitMessage, unused, load_config, load_config_override, ipv6_available, atomicWrite
 from Products.ZenUtils.DaemonStats import DaemonStats

@@ -11,7 +11,7 @@
 import logging
 from zope.interface import implements, providedBy
 from zope.component import adapter, getGlobalSiteManager
-from twisted.internet import defer, reactor, task
+from twisted.internet import defer
 from BTrees.IIBTree import IITreeSet
 from ZODB.utils import u64
 from Products.ZenRelations.PrimaryPathObjectManager import PrimaryPathObjectManager

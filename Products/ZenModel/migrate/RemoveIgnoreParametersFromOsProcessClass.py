@@ -10,10 +10,9 @@
 __doc__ = """
 Remove ignoreParameters and ignoreParametersWhenModeling from OSProcessClass
 """
-import Globals
+import Globals  # noqa
 import logging
 import Migrate
-from Products.ZenEvents.ZenEventClasses import Debug, Error
 from Products.Zuul.interfaces import ICatalogTool
 from Products.ZenModel.OSProcessClass import OSProcessClass
 

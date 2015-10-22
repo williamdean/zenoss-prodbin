@@ -9,13 +9,12 @@
 
 
 import logging
-import transaction
+
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 from Products.ZenMessaging.queuemessaging.interfaces import IQueuePublisher
 from Products.ZenMessaging.queuemessaging.publisher import getModelChangePublisher, PublishSynchronizer, DummyQueuePublisher
 from zenoss.protocols.protobufs.modelevents_pb2 import ModelEventList
 from Products.ZenModel.DeviceClass import DeviceClass
-
 
 log = logging.getLogger("zen.dynamicservices")
 

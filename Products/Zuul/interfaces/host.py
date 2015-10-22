@@ -7,7 +7,7 @@
 #
 ##############################################################################
 
-from ..form.schema import Text, TextLine, Int
+from ..form.schema import TextLine, Int
 from ..utils import ZuulMessageFactory as _t
 from . import IFacade, IInfo
 

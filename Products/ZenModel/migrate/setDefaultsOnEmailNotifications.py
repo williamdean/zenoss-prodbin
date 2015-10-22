@@ -11,7 +11,7 @@
 __doc__ = """Set the default values for E-mail notifications"""
 
 import logging
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.Utils import unused
 from Products.ZenModel.migrate import Migrate
 

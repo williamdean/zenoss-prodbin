@@ -12,7 +12,7 @@ import os, sys
 if __name__ == '__main__':
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
-import Globals
+import Globals  # noqa
 
 from Products.ZenCollector.services.config import CollectorConfigService
 from Products.ZenTestCase.BaseTestCase import BaseTestCase

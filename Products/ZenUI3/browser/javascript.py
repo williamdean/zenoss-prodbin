@@ -9,7 +9,7 @@
 
 
 import os
-import Globals
+import Globals  # noqa
 import zope.interface
 import md5
 from interfaces import IMainSnippetManager

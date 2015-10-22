@@ -12,7 +12,6 @@ import logging
 log = logging.getLogger("zen.Events")
 
 from Globals import InitializeClass
-from Globals import DTMLFile
 from AccessControl import ClassSecurityInfo
 
 from EventManagerBase import EventManagerBase

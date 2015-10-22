@@ -10,7 +10,7 @@
 __doc__ = """
 See ZEN-2690 Generate an error level event when a zenoss process fails.
 """
-import Globals
+import Globals  # noqa
 import logging
 import Migrate
 from Products.ZenEvents.ZenEventClasses import Debug, Error

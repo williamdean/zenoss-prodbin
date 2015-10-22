@@ -9,7 +9,7 @@
 
 
 from ZenossSecurity import ZEN_VIEW
-from Products.ZenUtils.Utils import getDisplayType, getDisplayId
+from Products.ZenUtils.Utils import getDisplayType
 from Products.ZenMessaging.audit import audit
 
 class DeviceManagerBase:

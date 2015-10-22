@@ -14,7 +14,7 @@ from HTMLParser import HTMLParser
 from urlparse import urlparse, urlunparse, parse_qs, urlsplit, urlunsplit
 from email.MIMEMultipart import MIMEMultipart
 from email.mime.application import MIMEApplication
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.ZenScriptBase import ZenScriptBase
 from Products.ZenUtils import Utils
 import subprocess

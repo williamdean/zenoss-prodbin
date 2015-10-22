@@ -10,7 +10,7 @@
 
 import os
 import transaction
-import Globals
+import Globals  # noqa
 
 from Products.ZenRelations.ImportRM import ImportRM
 

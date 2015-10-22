@@ -3,7 +3,7 @@
 import logging
 log = logging.getLogger('zen.Example')
 
-import Globals
+import Globals  # noqa
 import zope.component
 import zope.interface
 

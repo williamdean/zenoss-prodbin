@@ -18,7 +18,6 @@ from zope.interface import implements
 from zope.component import getUtility
 from Products.ZenModel.interfaces import IAction
 from Products.Zuul.infos import InfoBase, ProxyProperty
-from Products.Zuul import getFacade
 from Products.Zuul.interfaces import INotificationWindowInfo, INotificationSubscriptionInfo
 
 

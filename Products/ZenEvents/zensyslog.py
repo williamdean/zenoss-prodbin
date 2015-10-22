@@ -24,7 +24,7 @@ from twisted.internet.protocol import DatagramProtocol
 from twisted.internet import reactor, defer, udp
 from twisted.python import failure
 
-import Globals
+import Globals  # noqa
 import zope.interface
 import zope.component
 

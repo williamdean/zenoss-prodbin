@@ -10,10 +10,12 @@
 
 __doc__="""ZodbConnection
 """
-from Products.ZenUtils.GlobalConfig import globalConfToDict
 from zope.interface import Interface
 from zope.interface import implements
-from zope.component import queryUtility 
+
+from Products.ZenUtils.GlobalConfig import globalConfToDict
+from zope.component import queryUtility
+
 
 class IZodbFactoryLookup(Interface):
     def get(name=None):

@@ -12,7 +12,7 @@ import re
 import logging
 log = logging.getLogger('zen.HubService.ProcessConfig')
 
-import Globals
+import Globals  # noqa
 
 from Products.ZenCollector.services.config import CollectorConfigService
 from Products.ZenUtils.Utils import unused

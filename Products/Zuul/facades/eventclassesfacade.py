@@ -14,8 +14,7 @@ log = logging.getLogger('zen.EventClassesFacade')
 
 from zope.interface import implements
 from Products.Zuul.facades import TreeFacade
-from Products.Zuul.interfaces import IEventClassesFacade, IEventClassInfo, IInfo
-from Products.ZenEvents import EventClass
+from Products.Zuul.interfaces import IEventClassesFacade, IInfo
 from Acquisition import aq_parent
 
 class EventClassesFacade(TreeFacade):

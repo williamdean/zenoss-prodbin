@@ -7,11 +7,11 @@
 #
 ##############################################################################
 
-import Migrate
 import logging
-import sys
 import os
 from subprocess import Popen, PIPE
+
+import Migrate
 from Products.ZenUtils import GlobalConfig
 
 log = logging.getLogger('zen.Migrate')

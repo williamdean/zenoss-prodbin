@@ -11,7 +11,6 @@ import logging
 log = logging.getLogger("zen.plugins.DataMap")
 
 from pprint import pformat
-from pprint import pprint
 from twisted.spread import pb
 
 class PBSafe(pb.Copyable, pb.RemoteCopy): pass

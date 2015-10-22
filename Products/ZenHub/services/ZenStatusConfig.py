@@ -10,7 +10,7 @@
 
 import logging
 
-import Globals
+import Globals  # noqa
 
 from twisted.spread import pb
 

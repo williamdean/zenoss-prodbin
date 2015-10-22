@@ -7,16 +7,11 @@
 #
 ##############################################################################
 
-import re
-import sre_constants
 import logging
 log = logging.getLogger('zen.ManufacturersFacade')
-from pprint import pprint
 from zope.interface import implements
 from Products.Zuul.facades import TreeFacade
-from Products.Zuul.interfaces import IManufacturersFacade, IManufacturersInfo, IInfo
-from Products.ZenEvents import EventClass
-from Acquisition import aq_parent
+from Products.Zuul.interfaces import IManufacturersFacade, IInfo
 from Products.ZenModel.Manufacturer import manage_addManufacturer
 
 class ManufacturersFacade(TreeFacade):

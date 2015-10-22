@@ -8,7 +8,6 @@
 ##############################################################################
 
 
-import os.path
 from zope.interface import providedBy
 
 from Products.ZenTestCase.BaseTestCase import BaseTestCase

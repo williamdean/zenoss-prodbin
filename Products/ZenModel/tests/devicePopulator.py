@@ -15,7 +15,7 @@ Populates the zenoss database with test devices.
 
 '''
 
-import Globals
+import Globals  # noqa
 import transaction
 from Products.ZenUtils.ZCmdBase import ZCmdBase
 

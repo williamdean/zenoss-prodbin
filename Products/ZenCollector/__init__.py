@@ -72,7 +72,7 @@ steps:
         daemon.run()
 """
 
-import Globals
+import Globals  # noqa
 import zope.component
 import zope.interface
 

@@ -8,8 +8,6 @@
 ##############################################################################
 
 
-from Products.ZenUtils import Map
-
 __doc__="""Utils
 
 General utility functions module

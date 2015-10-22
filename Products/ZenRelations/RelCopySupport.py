@@ -19,16 +19,10 @@ $Id: RelCopySupport.py,v 1.15 2004/04/13 22:02:18 edahl Exp $"""
 
 __version__ = '$Revision: 1.15 $'
 
-import sys
-from cgi import escape
-
 # base class for RelCopyContainer
 from OFS.ObjectManager import checkValidId
-from OFS.CopySupport import CopyContainer, eNotSupported
+from OFS.CopySupport import CopyContainer
 
-from webdav.Lockable import ResourceLockedError
-
-from Acquisition import aq_base
 from AccessControl import getSecurityManager
 
 from OFS import Moniker
@@ -36,7 +30,8 @@ from OFS.CopySupport import CopyError, _cb_decode, eInvalid, eNotFound, eNoData
 
 from App.Dialogs import MessageDialog
 
-from Products.ZenRelations.Exceptions import InvalidContainer, ObjectNotFound, RelationshipExistsError, ZenImportError, ZenRelationsError, ZenSchemaError, ZentinelException
+from Products.ZenRelations.Exceptions import ZenRelationsError
+
 
 class RelCopyContainer(CopyContainer):
 

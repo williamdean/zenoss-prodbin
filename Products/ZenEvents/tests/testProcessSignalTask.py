@@ -13,8 +13,7 @@ import Zope2
 CONF_FILE = os.path.join(os.environ['ZENHOME'], 'etc', 'zope.conf')
 Zope2.configure(CONF_FILE)
 
-import unittest
-import Globals
+import Globals  # noqa
 from uuid import uuid4
 import logging
 

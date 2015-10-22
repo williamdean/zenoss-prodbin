@@ -29,7 +29,7 @@ from Products.ZenEvents.Exceptions import pythonThresholdException, \
 import logging
 log = logging.getLogger('zen.MinMaxCheck')
 
-from Products.ZenUtils.Utils import unused, nanToNone
+from Products.ZenUtils.Utils import nanToNone
 
 # Note:  this import is for backwards compatibility.
 # Import Products.ZenRRD.utils.rpneval directy.

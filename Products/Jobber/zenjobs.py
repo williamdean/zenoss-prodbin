@@ -8,12 +8,11 @@
 ##############################################################################
 
 
-import signal
 from datetime import datetime
 
 from zope.component import getUtility
 
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.Utils import zenPath, monkeypatch
 from Products.ZenUtils.ZenDaemon import ZenDaemon
 from Products.ZenUtils.ZodbFactory import IZodbFactoryLookup
@@ -22,8 +21,6 @@ from Products.ZenUtils.celeryintegration.worker import CeleryZenWorker
 
 from celery import concurrency
 from celery.signals import task_prerun
-from celery.exceptions import SystemTerminate
-
 from billiard import freeze_support
 
 from Products.Jobber.exceptions import NoSuchJobException

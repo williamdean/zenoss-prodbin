@@ -8,7 +8,7 @@
 ##############################################################################
 
 
-import Globals
+import Globals  # noqa
 from Products.ZenReports import Utils
 from Products.ZenReports.AliasPlugin import AliasPlugin, Column, \
                                             PythonColumnHandler, \

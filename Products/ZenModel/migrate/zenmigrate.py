@@ -8,7 +8,7 @@
 ##############################################################################
 
 
-import Globals
+import Globals  # noqa
 from Products.ZenModel.migrate import Migrate
 
 def main():

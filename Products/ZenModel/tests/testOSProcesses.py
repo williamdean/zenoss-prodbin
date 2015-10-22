@@ -8,7 +8,7 @@
 ##############################################################################
 
 from ZenModelBaseTest import ZenModelBaseTest
-from Products.ZenModel.Lockable import UNLOCKED, DELETE_LOCKED, UPDATE_LOCKED
+from Products.ZenModel.Lockable import UNLOCKED, UPDATE_LOCKED
 
 class TestOSProcesses(ZenModelBaseTest):
 

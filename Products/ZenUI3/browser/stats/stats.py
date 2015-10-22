@@ -8,7 +8,6 @@
 ##############################################################################
 
 
-from Products.Five.browser import BrowserView
 import collections
 import json
 import time
@@ -17,14 +16,17 @@ import subprocess
 import sys
 import os
 import re
+
 from zope import interface
 from zope import component
+
+from Products.Five.browser import BrowserView
 from ZServer.PubCore.ZRendezvous import ZRendevous
 import ZPublisher.interfaces
-
 from Products.Zuul import interfaces
 from Products.ZenModel.DataRoot import DataRoot
 from Products.ZenUtils.cstat import CStat
+
 _LOG = logging.getLogger('zen.stats')
 
 from Products.ZenUtils.requestlogging.ZopeRequestLogger import ZopeRequestLogger

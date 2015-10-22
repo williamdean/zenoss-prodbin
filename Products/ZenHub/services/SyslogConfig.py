@@ -16,10 +16,9 @@ Provides configuration for syslog message to Zenoss event conversions.
 import logging
 log = logging.getLogger('zen.HubService.SyslogConfig')
 
-import Globals
+import Globals  # noqa
 
 from Products.ZenCollector.services.config import CollectorConfigService
-from Products.ZenHub.zodb import onUpdate, onDelete
 
 
 class FakeDevice(object):

@@ -8,7 +8,7 @@
 ##############################################################################
 
 
-import Globals
+import Globals  # noqa
 import json
 from datetime import datetime
 from zope.interface import implements

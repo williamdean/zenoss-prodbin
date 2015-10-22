@@ -17,25 +17,16 @@ Determines the availability of a IP addresses using command line ping.
 import logging
 log = logging.getLogger("zen.zenping.cmdping")
 
-from twisted.python.failure import Failure
 from twisted.internet import defer, utils
 import time
 
-import Globals
+import Globals  # noqa
 from zope import interface
-from zope import component
-
-from zenoss.protocols.protobufs.zep_pb2 import SEVERITY_CLEAR
-
-from Products.ZenCollector import interfaces 
-from Products.ZenCollector.tasks import TaskStates, BaseTask
 
 from Products.ZenUtils.Utils import unused
 from Products.ZenCollector.services.config import DeviceProxy
 unused(DeviceProxy)
 
-from Products.ZenEvents.ZenEventClasses import Status_Ping
-from Products.ZenEvents import Event
 from Products import ZenStatus
 
 from PingResult import PingResult

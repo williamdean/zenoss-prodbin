@@ -9,14 +9,11 @@
 
 
 import sys
-import logging
 import tempfile
-import unittest
 import logging
-from optparse import OptionParser, SUPPRESS_HELP, NO_DEFAULT, OptionValueError
+
 from Products.ZenUtils.CmdBase import CmdBase
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
-from StringIO import StringIO
 
 """
 Cases for config source:

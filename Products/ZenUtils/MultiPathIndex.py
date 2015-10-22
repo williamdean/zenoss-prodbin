@@ -8,7 +8,6 @@
 ##############################################################################
 
 
-import time
 import logging
 LOG = logging.getLogger('ZenUtils.MultiPathIndex')
 

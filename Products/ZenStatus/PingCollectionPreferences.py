@@ -11,15 +11,12 @@
 import logging
 log = logging.getLogger("zen.zenping.pingcollectionprefs")
 
-import Globals
+import Globals  # noqa
 import zope.interface
 import zope.component
 from zope.event import notify
 
-from Products.ZenCollector import daemon 
-from Products.ZenCollector import interfaces 
-from Products.ZenCollector import tasks 
-from Products.ZenUtils import IpUtil
+from Products.ZenCollector import interfaces
 import Products.ZenStatus.interfaces
 
 # perform some imports to allow twisted's PB to serialize these objects

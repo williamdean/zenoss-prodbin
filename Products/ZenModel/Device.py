@@ -14,8 +14,6 @@ Base device (remote computer) class
 """
 
 import cgi
-import os
-import shutil
 import time
 import socket
 import logging

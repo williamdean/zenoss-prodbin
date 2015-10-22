@@ -17,7 +17,7 @@ from pprint import pprint
 import csv
 from sys import stdout
 
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.ZCmdBase import ZCmdBase
 
 class ReportRunner(ZCmdBase):

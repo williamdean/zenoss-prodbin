@@ -11,7 +11,7 @@
 
 import unittest
 
-from SelTestBase import SelTestBase,TARGET,DEFAULT_DEVICE_CLASS
+from SelTestBase import SelTestBase, DEFAULT_DEVICE_CLASS
 
 class TestChangeTitle(SelTestBase):
     """Base class for performing tests on specific device instances"""

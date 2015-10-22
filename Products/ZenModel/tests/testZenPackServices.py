@@ -5,14 +5,13 @@
 # License.zenoss under the directory where your Zenoss product is installed.
 #
 #
-import functools
 import os
 import json
 import cStringIO
 
 from contextlib import contextmanager
 
-import Globals
+import Globals  # noqa
 from Products.ZenModel.tests.ZenModelBaseTest import ZenModelBaseTest
 from Products.ZenModel.ZenPack import ZenPack, DirectoryConfigContents
 import Products.ZenModel.ZenPack

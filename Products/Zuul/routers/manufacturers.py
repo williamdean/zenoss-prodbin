@@ -9,7 +9,6 @@
 
 import logging
 log = logging.getLogger("zen.Manufacturers")
-from pprint import pprint
 from Products.ZenUtils.Ext import DirectResponse
 from Products import Zuul
 from Products.Zuul.decorators import require, serviceConnectionError

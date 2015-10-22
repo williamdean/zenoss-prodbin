@@ -8,10 +8,7 @@
 ##############################################################################
 
 
-import zope.component, zope.interface
-
 from Products.ZenCollector import CoreCollectorFrameworkFactory
-from Products.ZenCollector.interfaces import IFrameworkFactory
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 
 from Products.ZenCollector.config import ConfigurationProxy

@@ -10,11 +10,8 @@ import logging
 log = logging.getLogger("zen.Manufacturers")
 from zope.component import adapts
 from zope.interface import implements
-from Products.Zuul.tree import TreeNode
-from Products.Zuul.infos import InfoBase, ProxyProperty
-from Products.Zuul.decorators import info
-from Products.Zuul.interfaces import IManufacturersInfo, IManufacturers, IInfo 
-from Products.ZenModel.ManufacturerRoot import ManufacturerRoot
+from Products.Zuul.infos import InfoBase
+from Products.Zuul.interfaces import IManufacturersInfo
 from Products.ZenModel.Manufacturer import Manufacturer
 
 

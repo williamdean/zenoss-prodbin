@@ -21,9 +21,8 @@ log = logging.getLogger('zen.HubService.PingPerformanceConfig')
 from ipaddr import IPAddress
 from twisted.spread import pb
 
-import Globals
+import Globals  # noqa
 from Products.ZenCollector.services.config import CollectorConfigService
-from Products.ZenEvents.ZenEventClasses import Error, Clear
 from Products.ZenUtils.IpUtil import ipunwrap, ipstrip
 
 

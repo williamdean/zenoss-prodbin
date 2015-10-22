@@ -8,14 +8,13 @@
 ##############################################################################
 
 
-import os
 import shlex
 import sys
 import traceback
 import subprocess
-import signal
 import time
 from itertools import imap
+
 from Products.ZenMessaging.audit import audit
 from Products.ZenUI3.browser.streaming import StreamingView, StreamClosed
 from Products.ZenUtils.jsonutils import unjson

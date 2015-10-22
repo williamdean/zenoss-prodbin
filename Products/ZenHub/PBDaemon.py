@@ -35,7 +35,7 @@ import twisted.python.log
 from zope.interface import implements
 from zope.component import getUtilitiesFor
 from ZODB.POSException import ConflictError
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.ZenDaemon import ZenDaemon
 from Products.ZenEvents.ZenEventClasses import Heartbeat
 from Products.ZenUtils.PBUtil import ReconnectingPBClientFactory

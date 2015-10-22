@@ -17,7 +17,6 @@ is representable in URLs.  Zope object names *MUST* be okay in URLs.
 
 """
 
-import re
 import socket
 
 from ipaddr import IPAddress, IPNetwork

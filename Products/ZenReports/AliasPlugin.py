@@ -15,7 +15,7 @@ that plugins can subclass and provide minimal information.  The plugin is
 meant to be run from an rpt file.
 """
 
-import Globals
+import Globals  # noqa
 import logging
 import transaction
 from Products.ZenModel.RRDDataPoint import getDataPointsByAliases

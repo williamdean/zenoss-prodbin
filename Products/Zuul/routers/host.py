@@ -13,7 +13,6 @@ import logging
 from Products import Zuul
 from Products.Zuul.routers import DirectRouter
 from Products.ZenUtils.Ext import DirectResponse
-from Products.Zuul.interfaces import IInfo
 
 log = logging.getLogger('zen.ApplicationRouter')
 

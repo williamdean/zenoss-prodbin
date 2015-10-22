@@ -14,9 +14,7 @@ from AccessControl import ClassSecurityInfo
 from Globals import InitializeClass
 
 from Products.ZenUtils.Utils import convToUnits
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
-
-from Exceptions import DeviceExistsError, IpAddressConflict, IpCatalogNotFound, NoIPAddress, NoSnmp, PathNotFoundError, TraceRouteGap, WrongSubnetError, ZenModelError, ZentinelException
+from Products.ZenRelations.RelSchema import ToManyCont, ToOne
 
 
 class DeviceHW(Hardware):

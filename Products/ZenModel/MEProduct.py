@@ -13,7 +13,7 @@ from AccessControl import ClassSecurityInfo
 
 from ManagedEntity import ManagedEntity
 
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
+from Products.ZenRelations.RelSchema import ToMany, ToOne
 
 class MEProduct(ManagedEntity):
     """

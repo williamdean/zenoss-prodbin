@@ -10,7 +10,7 @@
 
 import socket
 import time
-import Globals
+import Globals  # noqa
 from Products.ZenUtils.Utils import zenPath
 defaultInfile = zenPath("log/origsyslog.log")
 

@@ -9,13 +9,12 @@
 
 
 import random
+
 import zope.component
 from Products.ZenModel.interfaces import IZenDocProvider
 from Products.ZenModel.tests.ZenModelBaseTest import ZenModelBaseTest
 from Products.ZenModel.tests.RRDTestUtils import createTemplate
 from Products.ZenModel.ZenModelBase import ZenModelBase
-from Products.ZenModel.RRDDataSource import SimpleRRDDataSource
-from Products.ZenModel.RRDDataPoint import RRDDataPoint
 
 
 class TestZenModelClass(ZenModelBase):

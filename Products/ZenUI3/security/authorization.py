@@ -8,8 +8,8 @@
 ##############################################################################
 
 import json
+
 import transaction
-from uuid import uuid1
 from Products.Five.browser import BrowserView
 from Products.Zuul.interfaces import IAuthorizationTool
 

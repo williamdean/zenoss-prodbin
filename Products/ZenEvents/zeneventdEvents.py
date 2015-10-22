@@ -1,17 +1,17 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2011, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 
-import pkg_resources
+import pkg_resources  # noqa
 from zenoss.protocols.eventlet.amqp import register_eventlet
 from twisted.internet import reactor
-from zope.component import adapter, getGlobalSiteManager
+from zope.component import adapter
 from Products.ZenEvents.zeneventd import ZenEventD
 from Products.ZenEvents.daemonlifecycle import DaemonCreatedEvent, DaemonStartRunEvent
 from Products.ZenEvents.daemonlifecycle import SigTermEvent, SigUsr1Event, BuildOptionsEvent

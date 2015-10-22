@@ -10,7 +10,7 @@
 
 import Migrate
 
-import Globals
+import Globals  # noqa
 from Products.ZenModel.MinMaxThreshold import MinMaxThreshold
 from Products.ZenModel.ThresholdClass import ThresholdClass
 

@@ -18,8 +18,7 @@
 
 import unittest
 
-from util.selTestUtils import TimeoutError, do_command_byname, getByValue
-
+from util.selTestUtils import do_command_byname
 from SelTestBase import SelTestBase
 
 secondarydev = 'zenosst'

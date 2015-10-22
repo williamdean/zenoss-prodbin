@@ -9,13 +9,16 @@
 
 
 import unittest
-from itertools import imap
-from zope.component import adapts, provideAdapter
+
 from zope.interface import implements, Interface
+
+from zope.component import adapts, provideAdapter
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 from Products.Zuul.interfaces import IInfo
 from Products import Zuul
 from Products.Zuul import infos
+
+
 class ITarget(Interface):
     pass
 

@@ -18,7 +18,7 @@ $Id$
 
 __version__ = "$Revision$"[11:-2]
 
-import Globals
+import Globals  # noqa
 
 
 class Stats:

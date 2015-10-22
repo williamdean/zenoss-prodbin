@@ -12,7 +12,6 @@ from AccessControl import ClassSecurityInfo, Permissions
 from ZenMenu import ZenMenu
 from Globals import InitializeClass
 from Acquisition import aq_base, aq_chain
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
 from Products.ZenUtils.Utils import cmpClassNames
 from Products.ZenWidgets import messaging
 

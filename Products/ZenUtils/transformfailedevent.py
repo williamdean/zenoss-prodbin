@@ -4,9 +4,7 @@ import pickle
 import logging
 log = logging.getLogger('zen.replayTransform')
 
-import Globals
-
-from zenoss.protocols.protobufs.zep_pb2 import Event
+import Globals  # noqa
 
 from Products.ZenEvents.Event import Event
 from Products.ZenUtils.ZCmdBase import ZCmdBase

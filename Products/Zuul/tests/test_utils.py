@@ -9,9 +9,10 @@
 
 
 import unittest
-from random import shuffle
+
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 from Products.Zuul.utils import getZProperties
+
 
 class Item(object):
     def __init__(self, num):

@@ -8,7 +8,7 @@ ZenHub service for providing configuration to the zenexample collector daemon.
 import logging
 log = logging.getLogger('zen.example')
 
-import Globals
+import Globals  # noqa
 from Products.ZenCollector.services.config import CollectorConfigService
 
 

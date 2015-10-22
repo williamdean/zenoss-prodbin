@@ -8,16 +8,16 @@
 ##############################################################################
 
 
-from Products.Zuul.facades import ObjectNotFoundException
-
 __doc__ = """
 The user preference settings for trees and grids conflict between ExtJS3 and 4, this migrate
 script removes them all.
 """
 
-import Migrate
 import logging
+
+import Migrate
 from Products.Zuul.interfaces import ICatalogTool
+
 log = logging.getLogger('zen.migrate')
 
 

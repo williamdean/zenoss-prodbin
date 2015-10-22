@@ -20,7 +20,7 @@ from zope.interface import implementer
 
 from Products.ZenUtils.application import (
     IApplicationManager, IApplication, IApplicationLog,
-    IApplicationConfiguration, ApplicationState
+    IApplicationConfiguration
 )
 
 from .client import ControlPlaneClient

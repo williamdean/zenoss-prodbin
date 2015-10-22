@@ -12,7 +12,7 @@ __doc__="""SiteError
 
 SiteError consolidates code used to handle and report site errors.
 """
-import Globals
+import Globals  # noqa
 import smtplib
 import re
 import cgi # for cgi.escape()

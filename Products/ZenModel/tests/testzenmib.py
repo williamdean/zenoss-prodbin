@@ -8,12 +8,11 @@
 ##############################################################################
 
 
-import os
-import os.path
 import logging
 
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
-from Products.ZenModel.zenmib import ZenMib, MibFile, PackageManager
+from Products.ZenModel.zenmib import ZenMib, MibFile
+
 
 class FakeConfigs: pass
 

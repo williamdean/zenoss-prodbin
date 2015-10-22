@@ -10,7 +10,7 @@
 
 __doc__='Base Classes for loading gunk in a ZenPack'
 
-import Globals
+import Globals  # noqa
 from Products.ZenReports.ReportLoader import ReportLoader
 from Products.ZenUtils.Utils import zenPath, binPath
 from Products.ZenUtils.guid.interfaces import IGUIDManager

@@ -20,7 +20,7 @@ import os.path
 import logging
 log = logging.getLogger("zen.zenping")
 
-import Globals
+import Globals  # noqa
 import zope.interface
 import zope.component
 
@@ -105,7 +105,6 @@ def getPingBackend():
 if __name__ == '__main__':
 
     # load zcml for the product
-    import Products.ZenossStartup
     from Products.Five import zcml
     zcml.load_site()
     pingBackend = getPingBackend()

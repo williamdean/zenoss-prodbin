@@ -9,17 +9,11 @@
 # 
 ##############################################################################
 
-import Globals
+import Globals  # noqa
 
 from ZopeRequestLogger import ZopeRequestLogger
 
-import subprocess
-import re
-import time
-import datetime
-import os
 import sys
-import redis
 import argparse
 import json
 import pprint

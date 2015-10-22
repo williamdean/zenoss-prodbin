@@ -16,11 +16,12 @@ IPv6 listeners or if a device has no SNMP support.
 
 """
 
-from Products.DataCollector.plugins.CollectorPlugin import PythonPlugin
-from Products.ZenUtils.Utils import binPath
-from twisted.internet.utils import getProcessOutput
-from Products.ZenUtils.ZenTales import talesCompile, getEngine
 import re
+
+from twisted.internet.utils import getProcessOutput
+
+from Products.DataCollector.plugins.CollectorPlugin import PythonPlugin
+from Products.ZenUtils.ZenTales import talesCompile, getEngine
 
 NMAPDEFAULTS = "-p 1-1024 -sT -oG -"
 class IpServiceMap(PythonPlugin):

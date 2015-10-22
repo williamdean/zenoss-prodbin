@@ -35,14 +35,16 @@ Note that modPath uses a different convention for core versus zenpack plugins.
 
 """
 
-from Products.ZenUtils.Utils import importClass, zenPath
 import sys
 import os
-import re
 import exceptions
 import imp
-from twisted.spread import pb
 import logging
+
+from twisted.spread import pb
+
+from Products.ZenUtils.Utils import importClass, zenPath
+
 log = logging.getLogger('zen.Plugins')
 
 class PluginImportError(exceptions.ImportError):

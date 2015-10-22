@@ -14,7 +14,6 @@ import json
 import logging
 import random
 import string
-import time
 import zlib
 
 from zope import interface

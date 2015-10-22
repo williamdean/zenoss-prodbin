@@ -17,16 +17,14 @@ Gets SNMP performance data and stores it in RRD files.
 
 from datetime import datetime, timedelta
 from collections import deque
-import random
 import logging
 log = logging.getLogger("zen.zenperfsnmp")
 
-import Globals
+import Globals  # noqa
 import zope.interface
 
 from twisted.internet import defer, error
-from twisted.python.failure import Failure
-from pynetsnmp.twistedsnmp import AgentProxy, snmpprotocol, Snmpv3Error
+from pynetsnmp.twistedsnmp import snmpprotocol, Snmpv3Error
 from pynetsnmp.netsnmp import SnmpTimeoutError, SnmpError
 
 from Products.ZenCollector.daemon import CollectorDaemon

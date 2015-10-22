@@ -12,7 +12,7 @@ from zope.component import adapts
 from zope.interface import implements
 from Products.Zuul.tree import TreeNode
 from Products.Zuul.infos import InfoBase, ProxyProperty
-from Products.Zuul.interfaces import IEventClassTreeNode, IEventClassInfo, IEventClasses, IInfo
+from Products.Zuul.interfaces import IEventClassTreeNode, IEventClassInfo, IEventClasses
 from Products.ZenEvents.EventClass import EventClass
 
 

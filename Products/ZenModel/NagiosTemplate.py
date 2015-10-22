@@ -8,10 +8,9 @@
 ##############################################################################
 
 
+
 from Globals import InitializeClass
-
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
-
+from Products.ZenRelations.RelSchema import ToManyCont, ToOne
 from ZenModelRM import ZenModelRM
 
 import warnings

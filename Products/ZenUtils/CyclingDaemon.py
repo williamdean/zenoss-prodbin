@@ -1,15 +1,14 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2009, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 
-from Globals import DevelopmentMode, INSTANCE_HOME, data_dir, opened
-import socket
+from Globals import DevelopmentMode, INSTANCE_HOME, data_dir, opened  # noqa
 from Products.ZenUtils.ZCmdBase import ZCmdBase
 from Products.ZenUtils.Utils import getDefaultZopeUrl
 from Products.ZenEvents import Event

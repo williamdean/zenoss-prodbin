@@ -8,9 +8,9 @@
 ##############################################################################
 
 
-import Globals
-from Products.ZenEvents.ZenEventClasses import Status_Snmp
+import Globals  # noqa
 from zope import component
+from twisted.internet import defer
 
 from Products.ZenHub.HubService import HubService
 from Products.ZenHub.PBDaemon import translateError
@@ -22,9 +22,6 @@ from Products.ZenModel.privateobject import is_private
 from Products.ZenHub.zodb import onUpdate, onDelete
 from Products.ZenHub.interfaces import IBatchNotifier
 from Acquisition import aq_parent
-
-from twisted.internet import defer
-
 from Procrastinator import Procrastinate
 from ThresholdMixin import ThresholdMixin
 

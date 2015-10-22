@@ -10,7 +10,7 @@
 
 import Migrate
 
-import Globals
+import Globals  # noqa
 
 from Products.ZenModel.MaintenanceWindow import createMaintenanceWindowCatalog
 

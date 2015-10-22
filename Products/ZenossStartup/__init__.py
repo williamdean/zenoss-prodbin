@@ -8,8 +8,6 @@
 ##############################################################################
 
 
-import json
-import os.path
 import logging
 
 log = logging.getLogger("zen.ZenossStartup")

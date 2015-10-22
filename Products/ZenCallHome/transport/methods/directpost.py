@@ -9,11 +9,9 @@
 
 
 import base64
-import cPickle
 import logging
 from urllib import urlencode
 import urllib2
-import zlib
 
 from Products.ZenCallHome.transport import CallHome
 

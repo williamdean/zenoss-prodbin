@@ -48,9 +48,8 @@ from uuid import uuid4
 from signal import signal, siginterrupt, SIGTERM, SIGINT
 from time import sleep
 
-import Globals
+import Globals  # noqa
 
-from Products.ZenUtils.mysql import MySQLdb
 from MySQLdb import connect
 from MySQLdb.cursors import DictCursor
 from _mysql import escape_string

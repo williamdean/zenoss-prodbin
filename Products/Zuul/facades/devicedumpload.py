@@ -14,7 +14,6 @@ from StringIO import StringIO
 from zope.interface import implements
 
 from Products.Zuul.facades import ZuulFacade
-from Products.Zuul import getFacade
 
 from Products.ZenModel.BatchDeviceDumper import BatchDeviceDumper
 from Products.ZenModel.BatchDeviceLoader import BatchDeviceLoader

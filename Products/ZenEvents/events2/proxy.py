@@ -10,7 +10,7 @@
 
 from itertools import imap
 from Products.ZenUtils.Time import LocalDateTimeFromMilli
-from Products.ZenEvents.events2.fields import EventField, EventSummaryField, ZepRawEventField
+from Products.ZenEvents.events2.fields import EventField, EventSummaryField
 from zenoss.protocols.protobufs.model_pb2 import DEVICE, COMPONENT
 from zenoss.protocols.protobufs.zep_pb2 import (
     STATUS_NEW,

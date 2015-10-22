@@ -17,7 +17,7 @@ definition that determines the concrete implementation returned by such a
 statement is in Zuul/configure.zcml.
 """
 
-from zope.interface import Interface, Attribute   
+from zope.interface import Interface
 
 
 class IFacade(Interface):

@@ -8,11 +8,9 @@
 ##############################################################################
 
 
-import Globals
+import Globals  # noqa
 import zope.interface
-
-from twisted.internet import base, defer, reactor
-from twisted.trial import unittest
+from twisted.internet import base, defer
 
 from Products.ZenCollector.daemon import CollectorDaemon
 from Products.ZenCollector.interfaces import ICollectorPreferences,\

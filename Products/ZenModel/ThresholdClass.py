@@ -10,10 +10,10 @@
 
 from AccessControl import ClassSecurityInfo
 
-import Globals
+import Globals  # noqa
 from Products.ZenModel.ZenModelRM import ZenModelRM
 from Products.ZenModel.ZenPackable import ZenPackable
-from Products.ZenRelations.RelSchema import RELMETATYPES, RelSchema, ToMany, ToManyCont, ToOne
+from Products.ZenRelations.RelSchema import ToManyCont, ToOne
 
 class BadInstance(Exception): pass
 

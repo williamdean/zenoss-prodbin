@@ -13,7 +13,7 @@ import unittest
 
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 from Products.ZenUtils.controlplane.application import (
-    DeployedApp, DeployedAppConfig, DeployedAppLog, DeployedAppLookup
+    DeployedApp, DeployedAppLookup
 )
 
 

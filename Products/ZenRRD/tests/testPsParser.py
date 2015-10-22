@@ -8,7 +8,6 @@
 ##############################################################################
 
 
-from pprint import pprint
 from md5 import md5
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 from Products.ZenRRD.tests.BaseParsersTestCase import Object

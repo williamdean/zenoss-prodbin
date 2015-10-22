@@ -8,7 +8,7 @@
 ##############################################################################
 
 
-import Globals
+import Globals  # noqa
 from traceback import format_exc
 from twisted.internet import reactor, defer
 

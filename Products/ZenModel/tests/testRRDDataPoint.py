@@ -8,14 +8,15 @@
 ##############################################################################
 
 
-import os, sys
+import os
+import sys
+
 if __name__ == '__main__':
     framework = None                    # quiet pyflakes
     execfile(os.path.join(sys.path[0], 'framework.py'))
 
 from ZenModelBaseTest import ZenModelBaseTest
-from Products.ZenModel.RRDDataPoint import getDataPointsByAliases    
-from Products.ZenModel.RRDDataPointAlias import RRDDataPointAlias
+from Products.ZenModel.RRDDataPoint import getDataPointsByAliases
 from Products.ZenModel.tests.RRDTestUtils import (
     addAliases, assertAliasDatapointInMap, createTemplate, removeTemplate)
 

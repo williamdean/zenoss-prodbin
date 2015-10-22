@@ -7,7 +7,6 @@
 #
 ##############################################################################
 
-import os
 import re
 import logging
 log = logging.getLogger("zen.migrate")

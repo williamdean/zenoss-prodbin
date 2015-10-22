@@ -9,8 +9,7 @@
 
 
 import unittest
-import zope.component
-import zope.component.event
+
 from Products.Zuul.tests.base import ZuulFacadeTestCase
 from Products.ZenUtils.guid import generate
 from Products.Zuul import getFacade

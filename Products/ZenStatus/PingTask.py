@@ -15,21 +15,14 @@ Determines the availability of a IP addresses using ping (ICMP).
 """
 
 import math
-import re
-import time
 import logging
 log = logging.getLogger("zen.zenping")
 
-from twisted.python.failure import Failure
-from twisted.internet import defer
-
-import Globals
+import Globals  # noqa
 from zope import interface
 from zope import component
 
-from zenoss.protocols.protobufs.zep_pb2 import SEVERITY_CLEAR
-
-from Products.ZenCollector import interfaces 
+from Products.ZenCollector import interfaces
 from Products.ZenCollector.tasks import TaskStates, BaseTask
 
 from Products.ZenUtils.Utils import unused

@@ -9,7 +9,7 @@
 
 
 import unittest
-import Globals
+import Globals  # noqa
 from Products.ZenTestCase.BaseTestCase import BaseTestCase
 
 from Products.ZenUtils.MultiPathIndex import MultiPathIndex
