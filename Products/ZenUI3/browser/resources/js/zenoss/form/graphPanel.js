@@ -413,11 +413,11 @@
         },
         exportData: function() {
             var chart = zenoss.visualization.chart.getChart(this.graphId),
-                plots = Ext.JSON.encode(chart.plots),
                 form, start, end,
                 startDate = chart.getStartDate(),
                 endDate = chart.getEndDate(),
-                uid = this.uid;
+                uid = this.uid,
+                futureTimes = [30, 60, 90];
 
             if(!startDate || !endDate){
                 Zenoss.message.error('Cannot export data: graph missing start or end date');
@@ -425,6 +425,22 @@
 
             start = startDate.unix();
             end = endDate.unix();
+
+            // if we have projected values, add the time horizons to the export
+            chart.plots.forEach(function(plot){
+               if(plot.projection){
+                   for(var j=0; j<futureTimes.length; ++j) {
+                       var futureTime = moment().add(futureTimes[j], 'days').unix(),
+                           forecastedValue = plot.projectionFn(futureTime);
+                       plot.values.unshift({
+                           series: plot.values[0].series,
+                           x: futureTime * 1000,
+                           y: Math.max(forecastedValue, this.miny)
+                       });
+                   }
+               }
+            }.bind(chart));
+
 
             form = Ext.DomHelper.append(document.body, {
                 tag: 'form',
@@ -436,7 +452,7 @@
                         display: 'none'
                     },
                     name: 'plots',
-                    html: plots
+                    html: Ext.JSON.encode(chart.plots)
                 },{
                     tag: 'input',
                     type: 'hidden',
