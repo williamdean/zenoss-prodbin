@@ -1,11 +1,11 @@
 #! /usr/bin/env python
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2007, 2010, 2011, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 
@@ -86,7 +86,7 @@ class SnmpPerformanceCollectionPreferences(object):
                           default=MAX_BACK_OFF_MINUTES,
                           type='int',
                           help="Deprecated since 4.1.1. No longer used")
-        
+
         parser.add_option('--triespercycle',
                           dest='triesPerCycle',
                           default=2,
@@ -100,6 +100,13 @@ class SnmpPerformanceCollectionPreferences(object):
                           type='int',
                           help="How many consecutive time outs per cycle before stopping attempts to collect")
 
+        parser.add_option('--free-snmp-etimelist',
+                          dest='freeEtimelist',
+                          default=False,
+                          action="store_true",
+                          help="Expirimental: Allows to clean net-snmp cache "
+                               "after the each snmp call to proceed devices "
+                               "with duplicates SNMP engineID's properly.")
 
     def postStartup(self):
         pass
@@ -175,6 +182,7 @@ class SnmpPerformanceCollectionTask(BaseTask):
         self._snmpPort = snmpprotocol.port()
         self.triesPerCycle = max(2, self._preferences.options.triesPerCycle)
         self._maxTimeouts = self._preferences.options.maxTimeouts
+        self._freeEtimelist = self._preferences.options.freeEtimelist
 
         self._lastErrorMsg = ''
         self._cycleExceededCount = 0
@@ -277,7 +285,7 @@ class SnmpPerformanceCollectionTask(BaseTask):
             # run with a smaller chunk size to identify bad oid. Can also have uncollected good oids because of timeouts
             oids_to_test = list(self._uncollectedOids())
             chunk_size = 1
-    
+
 
 
     @defer.inlineCallbacks
@@ -407,8 +415,8 @@ class SnmpPerformanceCollectionTask(BaseTask):
                 self._sendStatusEvent('SNMP v3 error cleared', eventKey='snmp_v3_error', severity=Event.Clear)
 
             # send snmp error clear
-            self._sendStatusEvent('SNMP error cleared', eventKey='snmp_error', severity=Event.Clear)                
-            
+            self._sendStatusEvent('SNMP error cleared', eventKey='snmp_error', severity=Event.Clear)
+
             # clear cycle exceeded event
             self._sendStatusEvent('Collection run time restored below interval', eventKey='interval_exceeded',
                                   severity=Event.Clear)
@@ -459,7 +467,7 @@ class SnmpPerformanceCollectionTask(BaseTask):
 
             log.error("{0} on {1}".format(summary, self.configId))
             self._sendStatusEvent(summary, eventKey='snmp_v3_error')
-        except SnmpError as e:            
+        except SnmpError as e:
             self._logOidsNotCollected('of %s' % str(e))
             summary = "Cannot connect to SNMP agent on {0._devId}: {1}".format(self, str(e))
             log.error("{0} on {1}".format(summary, self.configId))
@@ -567,7 +575,8 @@ class SnmpPerformanceCollectionTask(BaseTask):
             self._snmpProxy._snmpConnInfo != self._snmpConnInfo):
             self._snmpProxy = self._snmpConnInfo.createSession(
                                    protocol=self._snmpPort.protocol,
-                                   allowCache=True)
+                                   allowCache=True,
+                                   freeEtimelist=self._freeEtimelist)
             self._snmpProxy.open()
         return self._snmpProxy
 

@@ -1,10 +1,10 @@
 ##############################################################################
-# 
+#
 # Copyright (C) Zenoss, Inc. 2007, all rights reserved.
-# 
+#
 # This content is made available according to terms specified in
 # License.zenoss under the directory where your Zenoss product is installed.
-# 
+#
 ##############################################################################
 
 
@@ -82,7 +82,8 @@ class SnmpConnInfo(pb.Copyable, pb.RemoteCopy):
             result += ' privType: %s' % self.zSnmpPrivType
         return result
 
-    def createSession(self, protocol=None, allowCache=False):
+    def createSession(self, protocol=None, allowCache=False,
+                      freeEtimelist=False):
         "Create a session based on the properties"
         from pynetsnmp.twistedsnmp import AgentProxy
         cmdLineArgs=[]
@@ -114,7 +115,8 @@ class SnmpConnInfo(pb.Copyable, pb.RemoteCopy):
                        community=self.zSnmpCommunity,
                        cmdLineArgs=cmdLineArgs,
                        protocol=protocol,
-                       allowCache=allowCache)
+                       allowCache=allowCache,
+                       freeEtimelist=freeEtimelist)
         p.snmpConnInfo = self
         return p
 
