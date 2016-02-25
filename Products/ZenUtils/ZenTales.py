@@ -52,11 +52,11 @@ def talesEval(express, context, extra=None):
 
     try:
         res = compiled(getEngine().getContext(contextDict))
-    except Exception, e:
-        msg = "Error when processing tales expression %s on context %s : Exception Class %s Message: %s" % (express,
-                                                                                                            context,
-                                                                                                            type(e), e)
+    except Exception as e:
+        msg = "Error when processing tales expression %s on context %s : " \
+              "Exception Class %s Message: %s" % (express, context, type(e), e)
         raise InvalidTalesException(msg)
+
     if isinstance(res, Exception):
         raise res
     return res

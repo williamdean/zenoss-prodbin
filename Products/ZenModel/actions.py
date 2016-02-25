@@ -82,7 +82,7 @@ class TargetableActionException(ActionExecutionException):
 
 DEVICE_TAL = re.compile('\$\{dev[ice]*/([-A-Za-z_.0-9]+)\}')
 NO_ZEN_DEVICE = 'Unable to perform TALES evaluation on "%s" -- no Zenoss device'
-BAD_TALES = 'Unable to perform TALES evaluation on "%s"'
+BAD_TALES = 'Unable to perform TALES evaluation on "%s". Error: %s'
 def processTalSource(source, **kwargs):
     """
     This function is used to parse fields made available to actions that allow
@@ -105,8 +105,8 @@ def processTalSource(source, **kwargs):
         message = "%s: %s" % (ex, source)
         log.error("%s context = %s data = %s", message, context, kwargs)
         raise BadTalesExpresssion(message)
-    except InvalidTalesException:
-        message = BAD_TALES % source
+    except InvalidTalesException as ex:
+        message = BAD_TALES % (source, str(ex))
         log.error("%s context = %s data = %s", message, context, kwargs)
         raise BadTalesExpresssion(message)
 
