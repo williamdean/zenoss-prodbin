@@ -173,6 +173,11 @@ class ZopeRequestLogger(object):
 
     def log_request(self, request, finished=False):
         ''' '''
+        if finished:
+            start = time.time()
+            self.push_duration_metric(request)
+
+
         if self._next_config_check <= time.time():
             # self._log_zope_requests = self._redis_client.get(ZopeRequestLogger.REDIS_LOG_ZOPE_REQUESTS) in ("1", "true", "True", "t")
             self._log_zope_requests = os.path.isfile(os.path.join(ZopeRequestLogger.ZENHOME, 'etc', ZopeRequestLogger.REDIS_LOG_ZOPE_REQUESTS))
@@ -210,3 +215,36 @@ class ZopeRequestLogger(object):
                 data_to_log['duration'] = str(duration)
                 self._log.info(json.dumps(data_to_log))
 
+    COLLECTOR_REDIS_URL = "redis://localhost:6379/0"
+
+    def push_duration_metric(self, request):
+
+        if not hasattr(self, "collector_redis_connection"):
+            setattr(self, "collector_redis_connection", self.create_redis_client(self.COLLECTOR_REDIS_URL))
+
+        start = request._start
+        duration = time.time() - request._start
+        if duration < 0.2:
+           return
+        self._load_data_to_log(request)
+
+        user = request._data_to_log['user_name']
+        zope_id = os.environ.get("CONTROLPLANE_INSTANCE_ID", "X")
+        path = request._data_to_log['path_info']
+        action_and_method = request._data_to_log['action_and_method']
+
+	if not action_and_method:
+	    action_and_method="none"
+
+        # if path and duration<0.5 and path.startswith("/++resource++"):
+        #    return
+
+        tags = {"zope": zope_id, "user": user, "path": path, "action": action_and_method}
+
+        metric_data = {"timestamp": int(time.time()*1000), "metric": "zrequest.duration", "value": duration, "tags": tags}
+
+        try:
+            self.collector_redis_connection.lpush("metrics", json.dumps(metric_data))
+        except:
+            # Reconnect just in case
+            self.collector_redis_connection = self.create_redis_client(self.COLLECTOR_REDIS_URL)
