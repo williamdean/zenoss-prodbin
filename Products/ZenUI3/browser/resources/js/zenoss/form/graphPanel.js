@@ -697,6 +697,10 @@
             this.callParent(arguments);
         },
 
+        getOffset: function(){
+            return this.TZOffsetMS + this.TZLocalMS;
+        },
+
         setDisplayTimezone: function(tz){
             // store provided timezone
             this.displayTZ = tz;
@@ -828,7 +832,7 @@
                             var panel = self.up("graphpanel");
                             //update graphpanel.start with *UTC time*
                             //NOTE: panel.start should *always* be UTC!
-                            panel.start = moment.utc(self.getValue());
+                            panel.start = moment.tz(self.getValue() + self.getOffset(), Zenoss.USER_TIMEZONE);
                         }
                     }
                 },{
@@ -846,7 +850,7 @@
                             var panel = self.up("graphpanel");
                             //update graphpanel.end with *UTC time*
                             //NOTE: panel.end should *always* be UTC!
-                            panel.end = moment.utc(self.getValue());
+                            panel.end   = moment.tz(self.getValue() + self.getOffset(), Zenoss.USER_TIMEZONE);
                         }
                     }
                 },{
@@ -1190,6 +1194,9 @@
             // TODO - validate end is greater than start
             this.start = moment.utc(start);
             this.end = moment.utc(end);
+            this.start = moment.utc(start - this.getOffset());
+            this.end = moment.utc(end - this.getOffset());
+
 
             // these limits require a custom date range
             this.drange = end - start;
